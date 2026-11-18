@@ -1,0 +1,1873 @@
+<!DOCTYPE html>
+<html lang="ru" class="nojs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Подбор тура онлайн — Маршрут построен 21</title>
+<meta name="description" content="Онлайн-подбор тура за 8 шагов: Россия (Краснодарский край, Кавказ, Москва, Санкт-Петербург), Турция, Египет, ОАЭ, Азия. Вылет из Чебоксар, Нижнего Новгорода, Казани и Москвы. Лидия и Ольга, турагентство «Маршрут построен 21».">
+<meta name="theme-color" content="#04121d">
+<meta property="og:title" content="Подбор тура онлайн — Маршрут построен 21">
+<meta property="og:description" content="8 коротких шагов — и мы соберём 3–5 вариантов тура под ваши даты и бюджет. Бесплатно.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://маршрут21.рф/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2304121d'/%3E%3Cpath d='M52 12L10 29l16 6 6 16z' fill='%23FFB020'/%3E%3Cpath d='M52 12L26 35' stroke='%23FF6A45' stroke-width='3' fill='none'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@400;600;800&display=swap" rel="stylesheet">
+<!--
+  ============================================================================
+  МАРШРУТ ПОСТРОЕН 21 · квиз подбора тура · один самодостаточный файл
+  ----------------------------------------------------------------------------
+  1) Tilda: блок T123 («Вставка HTML-кода») или Zero Block → HTML.
+     Вставить весь код целиком. Стили изолированы внутри .mp21, сайт не ломается.
+  2) Автоотправка на почту работает через бесплатный formsubmit.co.
+     ОДИН РАЗ: отправить первую заявку → на marshrut.postroen21@yandex.ru
+     придёт письмо «Activate form» → нажать кнопку в письме. Дальше заявки
+     падают на почту автоматически. Если сервис недоступен — квиз не ломается:
+     он собирает текст заявки и отдаёт его в MAX / WhatsApp / Telegram / почту.
+  3) Все контакты, ИНН, РТА и адрес — в footer и в константах CONFIG внизу.
+  ============================================================================
+-->
+<style>
+/* ============================ БАЗА / ТОКЕНЫ ============================ */
+body{margin:0}
+.mp21{
+  --ink:#04121d; --ink2:#08202f; --surface:#0c2434; --surface2:#103044;
+  --line:rgba(150,196,222,.16); --line2:rgba(150,196,222,.28);
+  --text:#EAF3F8; --muted:#9FB7C7; --dim:#6F8A9C;
+  --paper:#F5EFE3; --paper2:#E3EBF1; --pink:#0B1F2C;
+  --sea:#2FD4C4; --sky:#4DA3FF; --sun:#FFB020; --coral:#FF6A45;
+  --magenta:#FF4D9D; --lime:#B6E82A; --indigo:#8C7BFF;
+  --ok:#33D68A; --warn:#FFB020; --danger:#FF6B6B; --info:#4DA3FF;
+  --accent:#2FD4C4; --a12:#2FD4C41f; --a30:#2FD4C44d; --a60:#2FD4C499;
+  --hh:70px;
+  --fb:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  --fd:'Unbounded','Manrope',system-ui,sans-serif;
+  --fm:'JetBrains Mono',ui-monospace,'SF Mono',Consolas,monospace;
+  position:relative; isolation:isolate; min-height:100vh; min-height:100svh;
+  background:var(--ink); color:var(--text); font-family:var(--fb);
+  font-size:16px; line-height:1.5; overflow-x:clip;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+.mp21 *,.mp21 *::before,.mp21 *::after{box-sizing:border-box}
+.mp21 h1,.mp21 h2,.mp21 h3,.mp21 p,.mp21 ul,.mp21 ol,.mp21 figure{margin:0}
+.mp21 ul,.mp21 ol{padding:0;list-style:none}
+.mp21 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.mp21 input,.mp21 textarea,.mp21 select{font:inherit;color:inherit}
+.mp21 a{color:inherit;text-decoration:none}
+.mp21 svg{display:block}
+.mp21 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:8px}
+.mp21 ::selection{background:var(--sun);color:#04121d}
+/* скроллбары в палитре проекта */
+.mp21 *{scrollbar-width:thin;scrollbar-color:var(--a60) rgba(255,255,255,.05)}
+.mp21 ::-webkit-scrollbar{width:10px;height:10px}
+.mp21 ::-webkit-scrollbar-track{background:rgba(255,255,255,.05);border-radius:99px}
+.mp21 ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--accent),var(--coral));border-radius:99px;border:2px solid rgba(4,18,29,.6)}
+.mp21 ::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,var(--sun),var(--magenta))}
+
+/* ============================ ФОН ============================ */
+.bg{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.bg .mesh{position:absolute;inset:0;
+  background:
+    radial-gradient(1100px 700px at 12% -8%, #10405c 0%, transparent 62%),
+    radial-gradient(900px 620px at 92% 4%, #1b2f6b 0%, transparent 60%),
+    radial-gradient(1000px 800px at 70% 42%, #0b3b46 0%, transparent 65%),
+    radial-gradient(900px 700px at 8% 78%, #2a1740 0%, transparent 62%),
+    linear-gradient(180deg,#04121d 0%,#061a28 45%,#04121d 100%);
+}
+.bg .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.42;mix-blend-mode:screen;will-change:transform}
+.bg .b1{width:46vw;height:46vw;min-width:340px;min-height:340px;left:-8vw;top:2vh;background:radial-gradient(circle,var(--sea),transparent 68%);animation:drift1 30s ease-in-out infinite}
+.bg .b2{width:40vw;height:40vw;min-width:300px;min-height:300px;right:-6vw;top:18vh;background:radial-gradient(circle,var(--indigo),transparent 68%);animation:drift2 38s ease-in-out infinite}
+.bg .b3{width:52vw;height:52vw;min-width:340px;min-height:340px;left:24vw;top:64vh;background:radial-gradient(circle,var(--coral),transparent 70%);opacity:.3;animation:drift3 44s ease-in-out infinite}
+.bg .b4{width:30vw;height:30vw;min-width:240px;min-height:240px;right:12vw;top:96vh;background:radial-gradient(circle,var(--accent),transparent 70%);opacity:.34;animation:drift2 34s ease-in-out infinite reverse}
+@keyframes drift1{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(6vw,4vh,0) scale(1.14)}}
+@keyframes drift2{0%,100%{transform:translate3d(0,0,0) scale(1.05)}50%{transform:translate3d(-5vw,-5vh,0) scale(.92)}}
+@keyframes drift3{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(-7vw,3vh,0) scale(1.12)}}
+.bg .dots{position:absolute;inset:0;opacity:.35;
+  background-image:radial-gradient(rgba(160,210,235,.22) 1px, transparent 1.2px);
+  background-size:34px 34px;
+  -webkit-mask-image:linear-gradient(180deg,#000,transparent 70%);mask-image:linear-gradient(180deg,#000,transparent 70%)}
+.bg .sky{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+.bg .sky .arc{fill:none;stroke:rgba(160,210,235,.35);stroke-width:1.4;stroke-dasharray:5 11;animation:flow 3s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-32}}
+.bg .grain{position:absolute;inset:0;opacity:.06;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+.bg .vig{position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 30%,transparent 40%,rgba(2,9,15,.72) 100%)}
+
+/* ============================ ШАПКА ============================ */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:60;height:var(--hh);
+  display:flex;align-items:center;gap:14px;padding:0 clamp(14px,3vw,30px);
+  background:linear-gradient(180deg,rgba(4,18,29,.94),rgba(4,18,29,.72));
+  backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);
+  border-bottom:1px solid var(--line);transition:box-shadow .3s,background .3s}
+.topbar.scrolled{box-shadow:0 18px 40px -26px #000,0 1px 0 var(--a30)}
+.brand{display:flex;align-items:center;gap:11px;flex:none}
+.brand .mark{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:none;
+  background:linear-gradient(140deg,var(--sun),var(--coral) 55%,var(--magenta));
+  box-shadow:0 8px 22px -10px var(--coral),inset 0 1px 0 rgba(255,255,255,.5);color:#04121d;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.brand:hover .mark{transform:rotate(-12deg) scale(1.06)}
+.brand .mark svg{width:22px;height:22px}
+.brand b{display:block;font-family:var(--fd);font-weight:600;font-size:14.5px;letter-spacing:-.2px;line-height:1.15}
+.brand span{display:block;font-size:11px;color:var(--muted);letter-spacing:.4px;text-transform:uppercase}
+.experts{display:flex;align-items:center;gap:9px;margin-left:6px;padding-left:16px;border-left:1px solid var(--line)}
+.ava{display:flex}
+.ava i{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-style:normal;
+  font-size:12px;font-weight:800;color:#04121d;border:2px solid #071c2a}
+.ava i:first-child{background:linear-gradient(140deg,var(--sun),var(--coral))}
+.ava i:last-child{background:linear-gradient(140deg,var(--sea),var(--sky));margin-left:-10px}
+.experts p{font-size:12.5px;color:var(--muted);line-height:1.25}
+.experts p b{color:var(--text);font-weight:700;display:block;font-size:13px}
+.topActions{margin-left:auto;display:flex;align-items:center;gap:8px}
+.telbtn{display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:12px;
+  border:1px solid var(--line2);font-weight:700;font-size:14px;white-space:nowrap;
+  transition:border-color .25s,background .25s,transform .2s}
+.telbtn svg{width:17px;height:17px;color:var(--sea)}
+.telbtn:hover{border-color:var(--sea);background:rgba(47,212,196,.1);transform:translateY(-1px)}
+.maxbtn{display:flex;align-items:center;gap:7px;padding:10px 15px;border-radius:12px;font-weight:800;font-size:14px;
+  color:#04121d;background:linear-gradient(120deg,var(--sun),var(--coral));
+  box-shadow:0 10px 24px -12px var(--coral);transition:transform .2s,box-shadow .25s,filter .2s}
+.maxbtn svg{width:16px;height:16px}
+.maxbtn:hover{transform:translateY(-1px);filter:brightness(1.07);box-shadow:0 14px 30px -12px var(--sun)}
+.iconbtn{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);display:grid;place-items:center;
+  color:var(--muted);transition:.25s}
+.iconbtn svg{width:18px;height:18px}
+.iconbtn:hover{color:var(--text);border-color:var(--accent);background:var(--a12);transform:rotate(-40deg)}
+.topProg{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:rgba(255,255,255,.06)}
+.topProg i{display:block;height:100%;width:0;border-radius:0 99px 99px 0;
+  background:linear-gradient(90deg,var(--sea),var(--sun),var(--coral),var(--magenta));
+  box-shadow:0 0 14px var(--a60);transition:width .6s cubic-bezier(.2,.8,.2,1)}
+
+/* ============================ СЦЕНА ============================ */
+.stage{max-width:1280px;margin:0 auto;padding:calc(var(--hh) + 34px) clamp(14px,3vw,30px) 40px;scroll-margin-top:calc(var(--hh) + 14px)}
+.intro{max-width:820px;margin-bottom:26px;animation:rise .7s cubic-bezier(.2,.8,.2,1) both}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:11.5px;letter-spacing:1.6px;
+  text-transform:uppercase;color:var(--sun);padding:6px 12px;border-radius:99px;
+  border:1px solid rgba(255,176,32,.35);background:rgba(255,176,32,.09)}
+.eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px var(--lime);animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.7)}}
+.intro h1{font-family:var(--fd);font-weight:800;letter-spacing:-1.2px;line-height:1.06;
+  font-size:clamp(30px,5.4vw,54px);margin:16px 0 12px}
+.intro h1 em{font-style:normal;background:linear-gradient(100deg,var(--sun) 0%,var(--coral) 42%,var(--magenta) 78%,var(--sky) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.intro .lede{font-size:clamp(15px,1.7vw,18px);color:var(--muted);max-width:640px}
+.trust{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.trust li{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted);
+  padding:7px 12px;border-radius:99px;border:1px solid var(--line);background:rgba(255,255,255,.035)}
+.trust svg{width:15px;height:15px;color:var(--sea)}
+.trust li:nth-child(2) svg{color:var(--lime)}
+.trust li:nth-child(3) svg{color:var(--sun)}
+.trust li:nth-child(4) svg{color:var(--sky)}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+.resume{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:18px;padding:13px 16px;border-radius:16px;
+  border:1px dashed rgba(255,176,32,.5);background:linear-gradient(100deg,rgba(255,176,32,.12),rgba(255,106,69,.07));
+  animation:rise .5s both}
+.resume svg{width:20px;height:20px;color:var(--sun);flex:none}
+.resume p{font-size:13.5px;flex:1;min-width:200px}
+.resume p b{color:var(--sun)}
+.resume .rbtn{padding:9px 15px;border-radius:11px;font-weight:700;font-size:13.5px;background:var(--sun);color:#04121d;transition:.2s}
+.resume .rbtn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.resume .rbtn.ghost{background:none;border:1px solid var(--line2);color:var(--muted)}
+.resume .rbtn.ghost:hover{color:var(--text);border-color:var(--danger)}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 372px;gap:24px;align-items:start}
+
+/* ============================ КАРТОЧКА КВИЗА ============================ */
+.card{position:relative;border-radius:26px;padding:clamp(16px,2.2vw,26px);min-height:540px;
+  display:flex;flex-direction:column;
+  background:linear-gradient(180deg,rgba(14,38,56,.9),rgba(7,23,36,.94));
+  border:1px solid var(--line);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 40px 90px -40px #000,inset 0 1px 0 rgba(255,255,255,.07);
+  scroll-margin-top:calc(var(--hh) + 16px);animation:rise .8s .1s cubic-bezier(.2,.8,.2,1) both}
+.card::before{content:'';position:absolute;left:22px;right:22px;top:0;height:2px;border-radius:99px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.9;transition:background .5s}
+.card.shake{animation:shake .42s cubic-bezier(.36,.07,.19,.97)}
+@keyframes shake{10%,90%{transform:translateX(-2px)}20%,80%{transform:translateX(4px)}30%,50%,70%{transform:translateX(-7px)}40%,60%{transform:translateX(7px)}}
+
+/* рельс шагов */
+.railScroll{overflow-x:auto;overflow-y:hidden;margin:-4px -4px 20px;padding:4px 4px 8px;scrollbar-width:thin}
+.rail{position:relative;display:flex;min-width:540px}
+.rail::before{content:'';position:absolute;left:6%;right:6%;top:13px;height:2px;
+  background:repeating-linear-gradient(90deg,var(--line2) 0 6px,transparent 6px 12px)}
+.railDot{flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;position:relative;padding:0 2px}
+.railDot i{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-style:normal;
+  font-family:var(--fm);font-size:11px;font-weight:700;color:var(--dim);
+  background:#0a2231;border:2px solid var(--line2);transition:.35s cubic-bezier(.2,.8,.2,1)}
+.railDot i svg{width:14px;height:14px}
+.railDot span{font-size:11px;color:var(--dim);letter-spacing:.2px;transition:.3s;white-space:nowrap}
+.railDot.done i{background:var(--a30);border-color:var(--accent);color:var(--text)}
+.railDot.done span{color:var(--muted)}
+.railDot.cur i{background:linear-gradient(140deg,var(--accent),var(--coral));border-color:transparent;color:#04121d;
+  transform:scale(1.16);box-shadow:0 0 0 5px var(--a12),0 10px 22px -10px var(--accent)}
+.railDot.cur span{color:var(--text);font-weight:700}
+.railDot:not(:disabled):hover i{border-color:var(--accent);transform:scale(1.1)}
+.railDot:disabled{cursor:not-allowed;opacity:.75}
+.railPlane{position:absolute;top:13px;left:6%;transform:translate(-50%,-50%) rotate(90deg);
+  color:var(--sun);pointer-events:none;transition:left .6s cubic-bezier(.4,1.4,.4,1);filter:drop-shadow(0 0 8px var(--sun))}
+.railPlane svg{width:19px;height:19px}
+
+/* шаги */
+.stepsWrap{flex:1}
+.step{display:none}
+.step.is-active{display:block}
+.step.is-active>*{animation:rise .5s cubic-bezier(.2,.8,.2,1) both}
+.step.is-active>*:nth-child(2){animation-delay:.05s}
+.step.is-active>*:nth-child(3){animation-delay:.1s}
+.step.is-active>*:nth-child(4){animation-delay:.15s}
+.step.is-active>*:nth-child(5){animation-delay:.2s}
+.step.is-active>*:nth-child(6){animation-delay:.25s}
+.stepHead{margin-bottom:18px}
+.stepNum{font-family:var(--fm);font-size:11.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+.stepNum b{color:var(--accent);font-size:14px}
+.stepHead h2{font-family:var(--fd);font-weight:600;letter-spacing:-.6px;line-height:1.15;
+  font-size:clamp(21px,2.7vw,29px);margin:8px 0 7px}
+.stepSub{font-size:14px;color:var(--muted);max-width:60ch}
+.blockLabel{display:flex;align-items:center;gap:9px;font-size:12.5px;font-weight:700;letter-spacing:.5px;
+  text-transform:uppercase;color:var(--muted);margin:22px 0 11px}
+.blockLabel svg{width:16px;height:16px;color:var(--accent)}
+.blockLabel em{font-style:normal;text-transform:none;letter-spacing:0;font-weight:500;color:var(--dim);font-size:12px}
+.blockLabel:first-child{margin-top:0}
+
+/* инструменты поиска */
+.dirTools{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+.search{position:relative;flex:1;min-width:220px;display:flex;align-items:center}
+.search svg{position:absolute;left:13px;width:17px;height:17px;color:var(--dim);pointer-events:none}
+.search input{width:100%;padding:12px 38px 12px 40px;border-radius:13px;background:rgba(255,255,255,.05);
+  border:1px solid var(--line);font-size:14px;transition:.25s}
+.search input::placeholder{color:var(--dim)}
+.search input:focus{outline:none;border-color:var(--accent);background:rgba(255,255,255,.08);box-shadow:0 0 0 4px var(--a12)}
+.search .clr{position:absolute;right:8px;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;color:var(--dim)}
+.search .clr:hover{color:var(--text);background:rgba(255,255,255,.08)}
+.search .clr svg{position:static;width:14px;height:14px}
+.filters{display:flex;gap:7px;flex-wrap:wrap}
+.filters button{padding:10px 14px;border-radius:12px;border:1px solid var(--line);font-size:13.5px;font-weight:600;
+  color:var(--muted);transition:.22s;white-space:nowrap}
+.filters button:hover{color:var(--text);border-color:var(--line2)}
+.filters button[aria-selected="true"]{background:var(--accent);border-color:transparent;color:#04121d;font-weight:800}
+.filters button i{font-style:normal;font-family:var(--fm);font-size:11px;opacity:.7;margin-left:5px}
+
+.selRow{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-bottom:13px;padding:10px 12px;border-radius:13px;
+  background:var(--a12);border:1px dashed var(--a60)}
+.selRow>span{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.3px}
+.selChip{display:inline-flex;align-items:center;gap:7px;padding:6px 8px 6px 12px;border-radius:99px;font-size:13px;font-weight:700;
+  background:linear-gradient(120deg,var(--accent),var(--coral));color:#04121d;animation:pop .3s cubic-bezier(.3,1.5,.5,1) both}
+.selChip button{width:19px;height:19px;border-radius:50%;display:grid;place-items:center;background:rgba(4,18,29,.25)}
+.selChip button svg{width:11px;height:11px}
+.selChip button:hover{background:rgba(4,18,29,.5)}
+@keyframes pop{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}
+
+/* сетки вариантов */
+.grid{display:grid;gap:10px}
+.grid.c3{grid-template-columns:repeat(auto-fill,minmax(212px,1fr))}
+.grid.c2{grid-template-columns:repeat(auto-fill,minmax(258px,1fr))}
+.groupTitle{grid-column:1/-1;display:flex;align-items:center;gap:10px;margin:8px 0 2px;
+  font-size:12px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted)}
+.groupTitle::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--line2),transparent)}
+.groupTitle b{color:var(--accent)}
+.opt{position:relative;display:flex;gap:12px;align-items:flex-start;text-align:left;padding:12px;border-radius:16px;
+  border:1px solid var(--line);background:rgba(255,255,255,.035);overflow:hidden;
+  transition:transform .2s cubic-bezier(.2,.8,.2,1),border-color .25s,background .25s,box-shadow .3s}
+.opt::after{content:'';position:absolute;inset:0;opacity:0;pointer-events:none;
+  background:radial-gradient(120% 90% at 100% 0%,var(--a30),transparent 60%);transition:opacity .3s}
+.opt:hover{transform:translateY(-2px);border-color:var(--a60);background:rgba(255,255,255,.06)}
+.opt:hover::after{opacity:.5}
+.opt[aria-checked="true"]{border-color:var(--accent);background:var(--a12);box-shadow:0 0 0 1px var(--accent),0 16px 34px -20px var(--accent)}
+.opt[aria-checked="true"]::after{opacity:1}
+.optIco{width:46px;height:46px;border-radius:13px;flex:none;display:grid;place-items:center;
+  background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.16),rgba(255,255,255,.03));
+  border:1px solid var(--line);transition:.3s}
+.opt[aria-checked="true"] .optIco{border-color:var(--a60);background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.24),var(--a12))}
+.optIco svg{width:32px;height:32px}
+.optIco.ui svg{width:22px;height:22px;color:var(--accent)}
+.optTxt{min-width:0;flex:1}
+.optTxt b{display:block;font-size:14.5px;font-weight:700;letter-spacing:-.1px;line-height:1.25}
+.optTxt span{display:block;font-size:12.2px;color:var(--muted);margin-top:3px;line-height:1.35}
+.optTag{display:inline-block;margin-top:6px;font-size:10.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;
+  padding:3px 7px;border-radius:6px;background:rgba(255,176,32,.16);color:var(--sun);border:1px solid rgba(255,176,32,.3)}
+.optTag.new{background:rgba(182,232,42,.15);color:var(--lime);border-color:rgba(182,232,42,.32)}
+.tick{position:absolute;top:9px;right:9px;width:21px;height:21px;border-radius:50%;display:grid;place-items:center;
+  background:var(--accent);color:#04121d;opacity:0;transform:scale(.5);transition:.28s cubic-bezier(.3,1.6,.5,1)}
+.tick svg{width:12px;height:12px}
+.opt[aria-checked="true"] .tick{opacity:1;transform:scale(1)}
+.opt.wide{grid-column:1/-1;border-style:dashed}
+.empty{padding:26px;text-align:center;border-radius:16px;border:1px dashed var(--line2);background:rgba(255,255,255,.03)}
+.empty p{color:var(--muted);font-size:14px;margin-bottom:14px}
+.empty .row{display:flex;gap:9px;justify-content:center;flex-wrap:wrap}
+
+/* сегменты / чипы */
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button{padding:11px 15px;border-radius:12px;border:1px solid var(--line);font-size:13.5px;font-weight:600;
+  color:var(--muted);transition:.22s;background:rgba(255,255,255,.03)}
+.seg button:hover{color:var(--text);border-color:var(--a60);transform:translateY(-1px)}
+.seg button[aria-checked="true"]{background:var(--accent);border-color:transparent;color:#04121d;font-weight:800;
+  box-shadow:0 12px 26px -14px var(--accent)}
+.seg.lvl{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:9px}
+.seg.lvl button{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:13px}
+.seg.lvl button b{font-family:var(--fm);font-size:17px;font-weight:700;display:flex;align-items:center;gap:4px}
+.seg.lvl button b svg{width:15px;height:15px}
+.seg.lvl button span{font-size:11.5px;opacity:.8}
+.chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:8px}
+.chip{position:relative;padding:11px 8px;border-radius:13px;border:1px solid var(--line);text-align:center;
+  background:rgba(255,255,255,.03);transition:.22s}
+.chip:hover{border-color:var(--a60);transform:translateY(-2px)}
+.chip b{display:block;font-size:14px;font-weight:700}
+.chip span{display:block;font-size:10.5px;color:var(--dim);font-family:var(--fm)}
+.chip em{position:absolute;top:-7px;left:50%;transform:translateX(-50%);font-style:normal;white-space:nowrap;
+  font-size:9px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;padding:2px 6px;border-radius:5px;
+  background:var(--coral);color:#04121d}
+.chip em.summer{background:var(--sun)}
+.chip em.velvet{background:var(--lime)}
+.chip[aria-checked="true"]{background:var(--a12);border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.chip[aria-checked="true"] span{color:var(--muted)}
+.ageChips{display:flex;flex-wrap:wrap;gap:6px}
+.ageChips button{width:42px;height:38px;border-radius:10px;border:1px solid var(--line);font-family:var(--fm);font-size:13px;
+  color:var(--muted);transition:.2s}
+.ageChips button:hover{border-color:var(--a60);color:var(--text)}
+.ageChips button[aria-checked="true"]{background:var(--accent);color:#04121d;border-color:transparent;font-weight:700}
+
+/* поля / степперы / слайдеры */
+.row2{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.panel{padding:15px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.035)}
+.panel .pTitle{font-size:13px;color:var(--muted);font-weight:600;margin-bottom:11px;display:flex;align-items:center;gap:8px}
+.panel .pTitle svg{width:16px;height:16px;color:var(--accent)}
+.stepper{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.stepper button{width:42px;height:42px;border-radius:12px;border:1px solid var(--line2);font-size:22px;line-height:1;
+  display:grid;place-items:center;color:var(--text);transition:.2s;background:rgba(255,255,255,.05)}
+.stepper button:hover:not(:disabled){background:var(--accent);color:#04121d;border-color:transparent;transform:scale(1.06)}
+.stepper button:disabled{opacity:.32;cursor:not-allowed}
+.stepper .val{flex:1;text-align:center}
+.stepper .val b{font-family:var(--fm);font-size:26px;font-weight:700;display:block;line-height:1}
+.stepper .val span{font-size:11.5px;color:var(--muted)}
+.presets{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.presets button{padding:9px 14px;border-radius:99px;border:1px dashed var(--line2);font-size:13px;color:var(--muted);transition:.22s}
+.presets button:hover{color:#04121d;background:var(--accent);border-color:transparent;border-style:solid;font-weight:700}
+.rngHead{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:6px}
+.rngHead b{font-family:var(--fm);font-size:clamp(24px,3.4vw,32px);font-weight:700;letter-spacing:-1px;line-height:1}
+.rngHead b i{font-style:normal;font-size:14px;color:var(--muted);font-family:var(--fb);margin-left:5px}
+.rngHead span{font-size:12.5px;color:var(--muted);text-align:right}
+.rng{-webkit-appearance:none;appearance:none;width:100%;height:32px;background:none;cursor:pointer;display:block}
+.rng::-webkit-slider-runnable-track{height:8px;border-radius:99px;
+  background:linear-gradient(90deg,var(--accent) var(--p,50%),rgba(255,255,255,.1) var(--p,50%))}
+.rng::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;margin-top:-9px;border-radius:50%;
+  background:radial-gradient(circle at 34% 30%,#fff,#cfe3ef);border:3px solid var(--accent);
+  box-shadow:0 6px 18px -6px var(--accent);transition:transform .15s}
+.rng:active::-webkit-slider-thumb{transform:scale(1.14)}
+.rng::-moz-range-track{height:8px;border-radius:99px;background:rgba(255,255,255,.1)}
+.rng::-moz-range-progress{height:8px;border-radius:99px;background:var(--accent)}
+.rng::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#fff;border:3px solid var(--accent);box-shadow:0 6px 18px -6px var(--accent)}
+.rng:disabled{opacity:.4;cursor:not-allowed}
+.rngScale{display:flex;justify-content:space-between;font-family:var(--fm);font-size:10.5px;color:var(--dim);margin-top:-2px}
+.toggle{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:13px 15px;border-radius:14px;
+  border:1px solid var(--line);background:rgba(255,255,255,.035);transition:.25s;margin-top:12px}
+.toggle:hover{border-color:var(--a60)}
+.toggle .sw{width:46px;height:26px;border-radius:99px;background:rgba(255,255,255,.12);position:relative;flex:none;transition:.3s}
+.toggle .sw::after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#8FA9BA;transition:.3s cubic-bezier(.3,1.4,.5,1)}
+.toggle[aria-checked="true"]{border-color:var(--accent);background:var(--a12)}
+.toggle[aria-checked="true"] .sw{background:var(--accent)}
+.toggle[aria-checked="true"] .sw::after{left:23px;background:#04121d}
+.toggle b{display:block;font-size:14px;font-weight:700}
+.toggle span{display:block;font-size:12px;color:var(--muted)}
+.field{display:block;margin-bottom:13px}
+.field>span{display:block;font-size:12.5px;font-weight:700;color:var(--muted);margin-bottom:7px;letter-spacing:.2px}
+.field>span i{font-style:normal;font-weight:500;color:var(--dim);text-transform:none}
+.field input,.field textarea{width:100%;padding:13px 15px;border-radius:13px;background:rgba(255,255,255,.05);
+  border:1px solid var(--line);font-size:15px;transition:.25s;resize:vertical}
+.field input::placeholder,.field textarea::placeholder{color:var(--dim)}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--accent);background:rgba(255,255,255,.08);box-shadow:0 0 0 4px var(--a12)}
+.field input[type="date"]{font-family:var(--fm);color-scheme:dark}
+.field.bad input,.field.bad textarea{border-color:var(--danger);box-shadow:0 0 0 4px rgba(255,107,107,.14)}
+.quickChips{display:flex;flex-wrap:wrap;gap:7px;margin:-4px 0 15px}
+.quickChips button{padding:7px 12px;border-radius:99px;border:1px dashed var(--line2);font-size:12.5px;color:var(--muted);transition:.2s}
+.quickChips button:hover{color:var(--accent);border-color:var(--accent);border-style:solid;background:var(--a12)}
+.consent{display:flex;gap:11px;align-items:flex-start;padding:13px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.03)}
+.consent.bad{border-color:var(--danger);background:rgba(255,107,107,.08)}
+.consent input{position:absolute;opacity:0;width:22px;height:22px;margin:0;cursor:pointer}
+.consent .cbox{width:22px;height:22px;border-radius:7px;border:2px solid var(--line2);flex:none;display:grid;place-items:center;
+  cursor:pointer;transition:.22s;position:relative}
+.consent .cbox::after{content:'';width:10px;height:6px;border-left:2.5px solid #04121d;border-bottom:2.5px solid #04121d;
+  transform:rotate(-45deg) scale(.4);opacity:0;transition:.22s;margin-top:-2px}
+.consent input:checked+.cbox{background:var(--accent);border-color:var(--accent)}
+.consent input:checked+.cbox::after{opacity:1;transform:rotate(-45deg) scale(1)}
+.consent input:focus-visible+.cbox{outline:2px solid var(--accent);outline-offset:3px}
+.consent p{font-size:12.5px;color:var(--muted);line-height:1.45}
+.consent label{cursor:pointer}
+.linkish{color:var(--accent);text-decoration:underline;text-underline-offset:3px;font-size:inherit;font-weight:600}
+.linkish:hover{color:var(--sun)}
+.err{display:flex;align-items:center;gap:9px;margin-top:14px;padding:11px 14px;border-radius:12px;font-size:13.5px;font-weight:600;
+  background:rgba(255,107,107,.13);border:1px solid rgba(255,107,107,.4);color:#FFC9C9;animation:pop .25s both}
+.err svg{width:17px;height:17px;flex:none;color:var(--danger)}
+.note{display:flex;gap:10px;padding:12px 14px;border-radius:13px;margin-top:14px;font-size:12.8px;color:var(--muted);
+  background:linear-gradient(100deg,var(--a12),transparent);border:1px solid var(--line)}
+.note svg{width:17px;height:17px;flex:none;color:var(--accent);margin-top:1px}
+.note b{color:var(--text)}
+
+/* подвал карточки */
+.cardFoot{display:flex;align-items:center;gap:12px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 22px;border-radius:14px;
+  font-weight:800;font-size:15px;transition:transform .2s cubic-bezier(.2,.8,.2,1),box-shadow .3s,filter .2s,background .25s,border-color .25s;
+  white-space:nowrap}
+.btn svg{width:18px;height:18px}
+.btn.ghost{border:1px solid var(--line2);color:var(--muted);font-weight:700}
+.btn.ghost:hover:not(:disabled){color:var(--text);border-color:var(--accent);background:var(--a12)}
+.btn.ghost:disabled{opacity:.3;cursor:not-allowed}
+.btn.primary{margin-left:auto;color:#04121d;background:linear-gradient(110deg,var(--sun),var(--coral) 58%,var(--magenta));
+  box-shadow:0 16px 34px -16px var(--coral),inset 0 1px 0 rgba(255,255,255,.45);position:relative;overflow:hidden}
+.btn.primary::after{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;transform:skewX(-22deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);animation:shine 4.5s ease-in-out infinite}
+@keyframes shine{0%,72%{left:-60%}88%,100%{left:130%}}
+.btn.primary:hover{transform:translateY(-2px);filter:brightness(1.06);box-shadow:0 22px 44px -18px var(--sun)}
+.btn.primary:active{transform:translateY(0) scale(.99)}
+.btn.primary[disabled]{filter:grayscale(.4) brightness(.85);cursor:wait}
+.btn.primary.ready{animation:readyPulse 2.4s ease-in-out infinite}
+@keyframes readyPulse{0%,100%{box-shadow:0 16px 34px -16px var(--coral),0 0 0 0 var(--a30)}50%{box-shadow:0 16px 34px -16px var(--coral),0 0 0 8px transparent}}
+.footHint{font-size:12.5px;color:var(--dim);text-align:center;flex:1;min-width:0}
+.spin{width:17px;height:17px;border-radius:50%;border:2.5px solid rgba(4,18,29,.3);border-top-color:#04121d;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+/* ============================ ПОСАДОЧНЫЙ ТАЛОН ============================ */
+.passCol{position:sticky;top:calc(var(--hh) + 20px);display:flex;flex-direction:column;gap:14px;
+  animation:rise .9s .2s cubic-bezier(.2,.8,.2,1) both}
+.passWrap{filter:drop-shadow(0 30px 46px rgba(2,10,18,.66))}
+.pass{position:relative;font-family:var(--fb);color:var(--pink)}
+.passMain{position:relative;padding:16px 18px 18px;border-radius:18px 18px 0 0;
+  background:linear-gradient(168deg,#FAF5EA 0%,#EFE9DC 42%,#DFE9F0 100%);
+  border-bottom:2px dashed rgba(11,31,44,.32);
+  -webkit-mask:radial-gradient(circle 11px at 0 100%,transparent 11px,#000 11.5px),radial-gradient(circle 11px at 100% 100%,transparent 11px,#000 11.5px);
+  -webkit-mask-composite:source-in;mask:radial-gradient(circle 11px at 0 100%,transparent 11px,#000 11.5px),radial-gradient(circle 11px at 100% 100%,transparent 11px,#000 11.5px);mask-composite:intersect}
+.passStub{position:relative;padding:14px 18px 16px;border-radius:0 0 18px 18px;
+  background:linear-gradient(168deg,#E7EEF3 0%,#D7E3EC 100%);
+  -webkit-mask:radial-gradient(circle 11px at 0 0,transparent 11px,#000 11.5px),radial-gradient(circle 11px at 100% 0,transparent 11px,#000 11.5px);
+  -webkit-mask-composite:source-in;mask:radial-gradient(circle 11px at 0 0,transparent 11px,#000 11.5px),radial-gradient(circle 11px at 100% 0,transparent 11px,#000 11.5px);mask-composite:intersect}
+.passStripe{height:6px;border-radius:18px 18px 0 0;margin:-16px -18px 13px;
+  background:linear-gradient(90deg,var(--accent),var(--sun),var(--coral),var(--magenta));transition:background .5s}
+.passTop{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.passTop .bp{font-family:var(--fm);font-size:10px;font-weight:700;letter-spacing:2.2px;color:#4A6070}
+.passTop .lg{display:flex;align-items:center;gap:6px;font-family:var(--fd);font-size:10.5px;font-weight:600;color:#0B1F2C}
+.passTop .lg i{width:19px;height:19px;border-radius:6px;display:grid;place-items:center;color:#04121d;
+  background:linear-gradient(140deg,var(--sun),var(--coral))}
+.passTop .lg i svg{width:11px;height:11px}
+.passRoute{display:flex;align-items:center;gap:10px}
+.passRoute .pt{min-width:0;flex:1}
+.passRoute .pt:last-child{text-align:right}
+.passRoute .code{font-family:var(--fm);font-size:clamp(28px,4vw,34px);font-weight:700;letter-spacing:-1.5px;line-height:1;
+  color:#0B1F2C;transition:color .3s}
+.passRoute .nm{font-size:11px;color:#4A6070;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600}
+.passPath{flex:none;width:74px;position:relative;height:26px;display:grid;place-items:center}
+.passPath::before{content:'';position:absolute;left:0;right:0;top:50%;height:2px;
+  background:repeating-linear-gradient(90deg,rgba(11,31,44,.4) 0 4px,transparent 4px 8px)}
+.passPath svg{width:20px;height:20px;position:relative;color:#C7452C;transform:rotate(90deg);
+  filter:drop-shadow(0 2px 3px rgba(0,0,0,.18));animation:fly 3.6s ease-in-out infinite}
+@keyframes fly{0%,100%{transform:rotate(90deg) translateY(0)}50%{transform:rotate(90deg) translateY(-3px)}}
+.passGrid{display:grid;grid-template-columns:1fr 1fr;gap:11px 12px;margin-top:15px;padding-top:13px;
+  border-top:1px solid rgba(11,31,44,.14)}
+.pf{min-width:0}
+.pf u{display:block;text-decoration:none;font-family:var(--fm);font-size:9px;letter-spacing:1.4px;color:#5E7484;margin-bottom:3px}
+.pf b{display:block;font-size:13.5px;font-weight:800;color:#0B1F2C;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pf.empty b{color:#9AAAB6;font-weight:600}
+.pf.flash b{animation:flash .7s ease-out}
+@keyframes flash{0%{color:#C7452C;transform:translateY(-3px)}100%{color:#0B1F2C;transform:none}}
+.passBudget{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin-bottom:11px}
+.passBudget u{display:block;text-decoration:none;font-family:var(--fm);font-size:9px;letter-spacing:1.4px;color:#5E7484;margin-bottom:3px}
+.passBudget b{font-family:var(--fm);font-size:22px;font-weight:700;letter-spacing:-.8px;color:#0B1F2C;line-height:1}
+.passStatus{font-size:10px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:5px 9px;border-radius:7px;
+  background:rgba(11,31,44,.1);color:#3D5566;border:1px solid rgba(11,31,44,.16);white-space:nowrap}
+.passStatus.ok{background:rgba(20,140,80,.16);color:#136B3F;border-color:rgba(20,140,80,.35)}
+.passStatus.warn{background:rgba(200,120,10,.18);color:#8A5406;border-color:rgba(200,120,10,.35)}
+.passBar{height:38px;color:#0B1F2C;margin-bottom:7px}
+.passBar svg{width:100%;height:100%}
+.passMeta{display:flex;align-items:center;justify-content:space-between;gap:10px;font-family:var(--fm);font-size:10px;color:#4A6070}
+.passPct{display:flex;align-items:center;gap:7px}
+.passPctBar{width:56px;height:5px;border-radius:99px;background:rgba(11,31,44,.14);overflow:hidden}
+.passPctBar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--coral),var(--sun));transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.passStamp{position:absolute;right:8px;top:96px;width:118px;height:118px;opacity:0;transform:scale(1.7) rotate(-26deg);
+  pointer-events:none;mix-blend-mode:multiply;transition:none}
+.passStamp.on{animation:stampIn .55s cubic-bezier(.2,1.5,.4,1) forwards}
+@keyframes stampIn{0%{opacity:0;transform:scale(1.8) rotate(-30deg)}60%{opacity:.95;transform:scale(.94) rotate(-13deg)}100%{opacity:.88;transform:scale(1) rotate(-14deg)}}
+
+.tipCard{padding:15px;border-radius:18px;border:1px solid var(--line);
+  background:linear-gradient(150deg,rgba(255,176,32,.1),rgba(255,77,157,.06) 60%,rgba(255,255,255,.03));
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.tipHead{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.tipHead .ava i{width:28px;height:28px;font-size:11px}
+.tipHead b{font-size:13px;font-weight:800;display:block;line-height:1.2}
+.tipHead span{font-size:11px;color:var(--muted)}
+.tipCard p{font-size:13px;color:#CFE0EC;line-height:1.5}
+.tipCard p b{color:var(--sun)}
+.miniHelp{display:flex;flex-direction:column;gap:8px;padding:14px 15px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.03)}
+.miniHelp a{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);transition:.2s;padding:4px 0}
+.miniHelp a:hover{color:var(--accent);transform:translateX(3px)}
+.miniHelp svg{width:16px;height:16px;color:var(--accent);flex:none}
+
+/* ============================ РЕЗУЛЬТАТ ============================ */
+.resHead{display:flex;gap:15px;align-items:flex-start;margin-bottom:20px}
+.resBadge{width:56px;height:56px;border-radius:17px;flex:none;display:grid;place-items:center;color:#04121d;
+  background:linear-gradient(140deg,var(--ok),var(--lime));box-shadow:0 16px 34px -16px var(--ok);animation:pop .5s cubic-bezier(.3,1.5,.5,1) both}
+.resBadge.warn{background:linear-gradient(140deg,var(--sun),var(--coral));box-shadow:0 16px 34px -16px var(--sun)}
+.resBadge svg{width:28px;height:28px}
+.resHead h2{font-family:var(--fd);font-weight:600;font-size:clamp(20px,2.6vw,27px);letter-spacing:-.6px;line-height:1.15;margin-bottom:7px}
+.resHead p{font-size:14px;color:var(--muted);max-width:56ch}
+.sendGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:10px;margin-bottom:14px}
+.send{display:flex;align-items:center;gap:11px;padding:14px;border-radius:15px;border:1px solid var(--line);
+  background:rgba(255,255,255,.04);text-align:left;transition:transform .2s,border-color .25s,background .25s,box-shadow .3s}
+.send:hover{transform:translateY(-2px);border-color:var(--a60);background:rgba(255,255,255,.07)}
+.send .si{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;flex:none;color:#04121d}
+.send .si svg{width:19px;height:19px}
+.send b{display:block;font-size:14.5px;font-weight:800}
+.send span{display:block;font-size:11.5px;color:var(--muted)}
+.send.max{border-color:rgba(255,176,32,.45);background:linear-gradient(120deg,rgba(255,176,32,.16),rgba(255,106,69,.08));
+  box-shadow:0 14px 30px -20px var(--sun)}
+.send.max .si{background:linear-gradient(140deg,var(--sun),var(--coral))}
+.send.wa .si{background:linear-gradient(140deg,#7BE495,#33D68A)}
+.send.tg .si{background:linear-gradient(140deg,#7FC4FF,var(--sky))}
+.send.mail .si{background:linear-gradient(140deg,#C9B8FF,var(--indigo))}
+.send.call .si{background:linear-gradient(140deg,var(--sea),#1E8E7E)}
+.resTools{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.resTools button,.resTools a{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;
+  border:1px solid var(--line);font-size:13px;font-weight:600;color:var(--muted);transition:.22s}
+.resTools svg{width:16px;height:16px}
+.resTools button:hover,.resTools a:hover{color:var(--text);border-color:var(--accent);background:var(--a12);transform:translateY(-1px)}
+.next3{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:18px}
+.next3 li{padding:14px;border-radius:15px;border:1px solid var(--line);background:rgba(255,255,255,.03);position:relative;overflow:hidden}
+.next3 li::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
+.next3 li:nth-child(2)::before{background:var(--sun)}
+.next3 li:nth-child(3)::before{background:var(--magenta)}
+.next3 u{display:block;text-decoration:none;font-family:var(--fm);font-size:11px;color:var(--dim);margin-bottom:6px}
+.next3 b{display:block;font-size:14px;margin-bottom:4px}
+.next3 span{font-size:12.3px;color:var(--muted);line-height:1.4}
+.reqBox{border-radius:15px;border:1px solid var(--line);background:rgba(2,10,17,.6);overflow:hidden}
+.reqBox .rh{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 14px;border-bottom:1px solid var(--line);
+  font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.4px;text-transform:uppercase}
+.reqBox pre{margin:0;padding:14px;max-height:230px;overflow:auto;font-family:var(--fm);font-size:12px;line-height:1.65;
+  color:#CFE0EC;white-space:pre-wrap;word-break:break-word}
+
+/* ============================ ПОДВАЛ ============================ */
+.foot{max-width:1280px;margin:0 auto;padding:26px clamp(14px,3vw,30px) 40px;border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start;justify-content:space-between}
+.foot .fc{font-size:12.5px;color:var(--dim);line-height:1.7;max-width:420px}
+.foot .fc b{color:var(--muted);display:block;font-size:13px;margin-bottom:4px;font-family:var(--fd);font-weight:600}
+.foot .fl{display:flex;flex-direction:column;gap:7px}
+.foot .fl a{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--muted);transition:.2s}
+.foot .fl a:hover{color:var(--accent)}
+.foot .fl svg{width:16px;height:16px;color:var(--accent)}
+.foot .dis{width:100%;font-size:11.5px;color:#5A7385;border-top:1px dashed var(--line);padding-top:14px}
+
+/* ============================ МОБИЛЬНАЯ ПАНель / ШТОРКА ============================ */
+.mobileBar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:55;gap:10px;align-items:center;
+  padding:10px clamp(12px,3vw,18px) calc(10px + env(safe-area-inset-bottom));
+  background:linear-gradient(0deg,rgba(4,18,29,.98),rgba(4,18,29,.86));
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line)}
+.mSummary{display:flex;align-items:center;gap:10px;padding:9px 13px;border-radius:13px;border:1px solid var(--line2);
+  background:rgba(255,255,255,.05);text-align:left;min-width:0;flex:1}
+.mSummary .mi{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex:none;color:#04121d;
+  background:linear-gradient(140deg,var(--paper),#C6D6E2)}
+.mSummary .mi svg{width:16px;height:16px}
+.mSummary b{display:block;font-family:var(--fm);font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mSummary span{display:block;font-size:10.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mobileBar .btn.primary{margin-left:0;padding:14px 18px;flex:none}
+.scrim{position:fixed;inset:0;z-index:70;background:rgba(2,9,15,.72);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);
+  opacity:0;pointer-events:none;transition:opacity .3s}
+.scrim.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:80;max-height:86svh;display:flex;flex-direction:column;
+  border-radius:24px 24px 0 0;border:1px solid var(--line);border-bottom:0;
+  background:linear-gradient(180deg,#0d2a3d,#061a28);transform:translateY(103%);
+  transition:transform .42s cubic-bezier(.2,.9,.2,1);box-shadow:0 -30px 70px -30px #000}
+.sheet.on{transform:none}
+.sheetHead{display:flex;align-items:center;gap:12px;padding:15px 18px;border-bottom:1px solid var(--line);flex:none}
+.sheetHead b{font-family:var(--fd);font-size:15px;font-weight:600;flex:1}
+.sheetHead .grip{position:absolute;left:50%;top:7px;transform:translateX(-50%);width:42px;height:4px;border-radius:99px;background:var(--line2)}
+.sheetBody{overflow-y:auto;padding:18px 18px calc(24px + env(safe-area-inset-bottom))}
+.sheetBody .passCol{position:static;animation:none}
+.modal{position:fixed;left:50%;top:50%;transform:translate(-50%,-46%) scale(.96);z-index:85;width:min(560px,calc(100vw - 28px));
+  max-height:84svh;display:flex;flex-direction:column;border-radius:22px;border:1px solid var(--line2);
+  background:linear-gradient(180deg,#0e2c40,#071c2a);box-shadow:0 40px 90px -30px #000;opacity:0;pointer-events:none;
+  transition:opacity .3s,transform .35s cubic-bezier(.2,.9,.2,1)}
+.modal.on{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.modalHead{display:flex;align-items:center;gap:12px;padding:17px 20px;border-bottom:1px solid var(--line)}
+.modalHead b{font-family:var(--fd);font-size:16px;font-weight:600;flex:1}
+.modalBody{padding:20px;overflow-y:auto;font-size:13.5px;color:var(--muted);line-height:1.6}
+.modalBody p{margin-bottom:11px}
+.modalBody b{color:var(--text)}
+.modalBody textarea{width:100%;min-height:200px;padding:13px;border-radius:13px;background:rgba(2,10,17,.6);
+  border:1px solid var(--line);font-family:var(--fm);font-size:12px;color:#CFE0EC;resize:vertical}
+.modalFoot{padding:14px 20px;border-top:1px solid var(--line);display:flex;gap:10px;justify-content:flex-end}
+
+/* тосты */
+.toasts{position:fixed;left:18px;bottom:18px;z-index:95;display:flex;flex-direction:column;gap:9px;max-width:min(400px,calc(100vw - 36px))}
+.toast{display:flex;align-items:flex-start;gap:11px;padding:13px 15px;border-radius:14px;border:1px solid var(--line2);
+  background:linear-gradient(120deg,#103247,#0a2233);box-shadow:0 22px 44px -22px #000;font-size:13.3px;
+  animation:toastIn .38s cubic-bezier(.2,1.3,.4,1) both}
+.toast.out{animation:toastOut .3s ease-in forwards}
+@keyframes toastIn{from{opacity:0;transform:translateX(-24px) scale(.94)}to{opacity:1;transform:none}}
+@keyframes toastOut{to{opacity:0;transform:translateY(10px) scale(.96)}}
+.toast svg{width:18px;height:18px;flex:none;color:var(--accent);margin-top:1px}
+.toast.warn svg{color:var(--sun)}
+.toast.ok svg{color:var(--ok)}
+.toast.bad svg{color:var(--danger)}
+.toast p{flex:1}
+.toast button{font-size:12.5px;font-weight:800;color:var(--sun);white-space:nowrap;padding:2px 4px}
+.toast button:hover{text-decoration:underline}
+.fx{position:fixed;inset:0;z-index:96;pointer-events:none}
+.noscript{display:none;padding:26px;border-radius:20px;border:1px dashed var(--line2);background:rgba(255,255,255,.04);font-size:15px}
+.noscript a{color:var(--sun);font-weight:800}
+.nojs .card,.nojs .passCol,.nojs .mobileBar,.nojs .resume{display:none!important}
+.nojs .noscript{display:block}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
+
+/* ============================ АДАПТИВ ============================ */
+@media (max-width:1080px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  .asideSlot{display:none}
+  .mobileBar{display:flex}
+  .stage{padding-bottom:110px}
+  .foot{padding-bottom:110px}
+  .card{min-height:460px}
+}
+@media (max-width:860px){
+  .experts{display:none}
+  .brand span{display:none}
+}
+@media (max-width:640px){
+  .mp21{--hh:62px;font-size:15px}
+  .telbtn span{display:none}
+  .telbtn{padding:10px 12px}
+  .maxbtn span{display:none}
+  .maxbtn{padding:10px 13px}
+  .brand .mark{width:36px;height:36px}
+  .brand b{font-size:13px;max-width:150px}
+  .stage{padding-top:calc(var(--hh) + 22px)}
+  .intro{margin-bottom:20px}
+  .trust li{font-size:11.5px;padding:6px 10px}
+  .card{border-radius:20px;padding:15px}
+  .grid.c3,.grid.c2{grid-template-columns:1fr}
+  .opt{padding:11px}
+  .optIco{width:42px;height:42px}
+  .optIco svg{width:29px;height:29px}
+  .cardFoot .btn.ghost{padding:13px 15px}
+  .cardFoot .btn.primary{padding:13px 18px;font-size:14px}
+  .footHint{display:none}
+  .chips{grid-template-columns:repeat(auto-fill,minmax(78px,1fr))}
+  .resHead{gap:12px}
+  .resBadge{width:46px;height:46px;border-radius:14px}
+  .resBadge svg{width:23px;height:23px}
+  .toasts{left:12px;right:12px;bottom:calc(84px + env(safe-area-inset-bottom));max-width:none}
+  .sendGrid{grid-template-columns:1fr 1fr}
+  .send{padding:11px;gap:9px}
+  .send .si{width:32px;height:32px}
+  .send b{font-size:13px}
+  .send span{font-size:10.5px}
+}
+@media (max-width:400px){
+  .sendGrid{grid-template-columns:1fr}
+  .railDot span{font-size:10px}
+}
+@media (prefers-reduced-motion:reduce){
+  .mp21 *,.mp21 *::before,.mp21 *::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .bg .sky .plane{display:none}
+}
+@media print{.topbar,.mobileBar,.bg,.cardFoot{display:none}.mp21{background:#fff;color:#000}}
+</style>
+</head>
+<body>
+<div class="mp21" id="mp21">
+
+  <!-- ==================== SVG-СПРАЙТ ==================== -->
+  <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <g id="ui" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></g>
+    </defs>
+    <symbol id="u-plane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2.5L2 11l7.2 2.8L12 21.5z"/><path d="M21.5 2.5L9.2 13.8"/></symbol>
+    <symbol id="u-plane-f" viewBox="0 0 24 24"><path d="M21.5 2.5L2 11l7.2 2.8L12 21.5z" fill="currentColor"/></symbol>
+    <symbol id="u-ar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+    <symbol id="u-al" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5M11 6l-6 6 6 6"/></symbol>
+    <symbol id="u-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></symbol>
+    <symbol id="u-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 006 6l1.5-2 4 1.5v3a2 2 0 01-2.2 2A17 17 0 014.5 5.7 2 2 0 016.5 3.5z"/></symbol>
+    <symbol id="u-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4.5H4a1 1 0 00-1 1v10a1 1 0 001 1h4v4l5-4h7a1 1 0 001-1v-10a1 1 0 00-1-1z"/><path d="M8 10h8M8 13h5"/></symbol>
+    <symbol id="u-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 5.5A2.5 2.5 0 0013.5 4h-7A2.5 2.5 0 004 6.5v7A2.5 2.5 0 005.5 16"/></symbol>
+    <symbol id="u-dl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 11l5 5 5-5M4 20h16"/></symbol>
+    <symbol id="u-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="2.5"/><circle cx="17" cy="6" r="2.5"/><circle cx="17" cy="18" r="2.5"/><path d="M8.3 10.8l6.4-3.4M8.3 13.2l6.4 3.4"/></symbol>
+    <symbol id="u-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12a8.5 8.5 0 11-2.8-6.3"/><path d="M20.5 3.5v5h-5"/></symbol>
+    <symbol id="u-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="u-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
+    <symbol id="u-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z" fill="currentColor"/></symbol>
+    <symbol id="u-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M8 3v4M16 3v4M3.5 10h17"/></symbol>
+    <symbol id="u-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0111 0"/><path d="M16 5.6a3.2 3.2 0 010 6.3M17.6 20a5.6 5.6 0 00-2-4.3"/></symbol>
+    <symbol id="u-wallet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="3"/><path d="M3 10.5h18M16.5 15h1.5"/></symbol>
+    <symbol id="u-hotel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20V7l9-4 9 4v13"/><path d="M9.5 20v-5h5v5"/><path d="M8 10h2M14 10h2M3 20h18"/></symbol>
+    <symbol id="u-spark" viewBox="0 0 24 24"><path d="M12 3l1.9 5.3L19 10l-5.1 1.7L12 17l-1.9-5.3L5 10l5.1-1.7z" fill="currentColor"/><circle cx="18.6" cy="17.6" r="1.6" fill="currentColor"/></symbol>
+    <symbol id="u-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.4v.9"/></symbol>
+    <symbol id="u-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.5-3.2 7.6-7.5 9-4.3-1.4-7.5-4.5-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10"/></symbol>
+    <symbol id="u-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.3l3.4 2"/></symbol>
+    <symbol id="u-train" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3.5" width="14" height="13" rx="3.5"/><path d="M5 10.5h14M8.5 20l-2 2M15.5 20l2 2M8.5 13.5h.01M15.5 13.5h.01"/></symbol>
+    <symbol id="u-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+    <symbol id="u-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7.5l8 5.5 8-5.5"/></symbol>
+    <symbol id="u-ticket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5a2 2 0 012-2h14a2 2 0 012 2V10a2 2 0 000 4v1.5a2 2 0 01-2 2H5a2 2 0 01-2-2V14a2 2 0 000-4z"/><path d="M14 6.5v11" stroke-dasharray="2 3"/></symbol>
+    <symbol id="u-edit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9a2.5 2.5 0 10-3.5-3.5L4.5 16.5z"/><path d="M14.5 6.5L17.5 9.5"/></symbol>
+    <symbol id="u-compass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></symbol>
+
+    <!-- направления -->
+    <symbol id="d-krasnodar" viewBox="0 0 48 48"><circle cx="35" cy="13" r="7" fill="#FFB020"/><path d="M2 33l11-13 9 11 7-8 17 10z" fill="#1E8E7E"/><path d="M2 38c5-3 8 3 13 0s8 3 13 0 8 3 13 0" stroke="#4DA3FF" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M2 44c5-3 8 3 13 0s8 3 13 0 8 3 13 0" stroke="#2FD4C4" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".7"/></symbol>
+    <symbol id="d-kavkaz" viewBox="0 0 48 48"><circle cx="39" cy="11" r="5.5" fill="#FFB020" opacity=".9"/><path d="M2 40L16 13l10 17 6-8 14 18z" fill="#2A6F8F"/><path d="M16 13l6 10-4 2-3-3-3 3-3-2z" fill="#EAF3F8"/><path d="M32 22l5 7-3 1-2-2-2 2-2-1z" fill="#EAF3F8"/><path d="M3 41h42" stroke="#B6E82A" stroke-width="3" stroke-linecap="round"/></symbol>
+    <symbol id="d-moscow" viewBox="0 0 48 48"><rect x="6" y="26" width="10" height="16" fill="#2A6F8F"/><rect x="32" y="22" width="10" height="20" fill="#2A6F8F"/><rect x="18" y="20" width="12" height="22" fill="#FF6A45"/><path d="M18 20l6-9 6 9z" fill="#C7452C"/><path d="M24 2l1.6 3.4 3.7.5-2.7 2.6.7 3.7-3.3-1.8-3.3 1.8.7-3.7-2.7-2.6 3.7-.5z" fill="#FFB020"/><g fill="#FFD98A"><rect x="21" y="25" width="3" height="4"/><rect x="26" y="25" width="3" height="4"/><rect x="21" y="33" width="3" height="4"/><rect x="26" y="33" width="3" height="4"/></g><path d="M2 44h44" stroke="#EAF3F8" stroke-width="2" opacity=".45"/></symbol>
+    <symbol id="d-spb" viewBox="0 0 48 48"><path d="M22 40V16l2-11 2 11v24z" fill="#FFB020"/><circle cx="24" cy="4" r="2" fill="#FFD98A"/><path d="M6 40V26h8v14z" fill="#2A6F8F"/><path d="M34 40V26h8v14z" fill="#2A6F8F"/><g fill="#FFD98A"><rect x="8" y="29" width="4" height="3"/><rect x="36" y="29" width="4" height="3"/></g><path d="M2 43c6-3 9 3 15 0s9 3 15 0 8 3 14 0" stroke="#4DA3FF" stroke-width="3" fill="none" stroke-linecap="round"/></symbol>
+    <symbol id="d-kaliningrad" viewBox="0 0 48 48"><path d="M18 42l3-24h6l3 24z" fill="#EAF3F8"/><path d="M19.6 30h8.8l.8 6h-10.4z" fill="#FF6A45"/><rect x="20" y="12" width="8" height="6" rx="1" fill="#FFB020"/><path d="M24 6l3 6h-6z" fill="#C7452C"/><path d="M30 14l12-4M30 18l12 4" stroke="#FFB020" stroke-width="2" opacity=".85" stroke-linecap="round"/><path d="M3 43h42" stroke="#B6E82A" stroke-width="3" stroke-linecap="round"/></symbol>
+    <symbol id="d-karelia" viewBox="0 0 48 48"><path d="M8 38l7-13 7 13z" fill="#1E8E7E"/><path d="M10 30l5-9 5 9z" fill="#2FD4C4"/><rect x="14" y="38" width="2" height="4" fill="#7A5A3A"/><path d="M26 38l7-15 7 15z" fill="#1E8E7E"/><path d="M28 29l5-10 5 10z" fill="#2FD4C4"/><rect x="32" y="38" width="2" height="4" fill="#7A5A3A"/><path d="M2 44c6-2 10 2 16 0s10 2 16 0 8 2 12 0" stroke="#4DA3FF" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="40" cy="10" r="5" fill="#FFB020" opacity=".85"/></symbol>
+    <symbol id="d-altai" viewBox="0 0 48 48"><path d="M2 38L18 10l16 28z" fill="#2A6F8F"/><path d="M18 10l7 12-5 2-4-3-4 3-3-2z" fill="#EAF3F8"/><path d="M30 38l8-14 8 14z" fill="#1E8E7E"/><path d="M4 44c8-4 12 2 20-2s12 2 20-2" stroke="#2FD4C4" stroke-width="3" fill="none" stroke-linecap="round"/></symbol>
+    <symbol id="d-baikal" viewBox="0 0 48 48"><circle cx="38" cy="10" r="5" fill="#FFB020"/><path d="M2 24l10-8 8 6 8-8 18 10" stroke="#4DA3FF" stroke-width="2.5" fill="none" opacity=".7" stroke-linejoin="round"/><ellipse cx="24" cy="33" rx="21" ry="11" fill="#2A6F8F"/><path d="M8 31l8 3-4 4 11-2 6 4" stroke="#EAF3F8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="d-turkey" viewBox="0 0 48 48"><rect x="6" y="20" width="4" height="20" fill="#EAF3F8"/><path d="M6 20l2-6 2 6z" fill="#FF6A45"/><rect x="38" y="20" width="4" height="20" fill="#EAF3F8"/><path d="M38 20l2-6 2 6z" fill="#FF6A45"/><path d="M12 40V28a12 12 0 0124 0v12z" fill="#FFB020"/><path d="M24 11l2 5h-4z" fill="#FFD98A"/><rect x="20" y="32" width="8" height="8" rx="4" fill="#C7452C"/><path d="M2 42h44" stroke="#EAF3F8" stroke-width="2" opacity=".4"/></symbol>
+    <symbol id="d-egypt" viewBox="0 0 48 48"><circle cx="37" cy="13" r="7" fill="#FF6A45"/><path d="M4 40L20 12l16 28z" fill="#FFB020"/><path d="M20 12l16 28H20z" fill="#E09410"/><path d="M28 40l10-16 10 16z" fill="#FFD98A"/><path d="M3 42h42" stroke="#C7452C" stroke-width="3" stroke-linecap="round"/></symbol>
+    <symbol id="d-uae" viewBox="0 0 48 48"><path d="M22 42V10l4-8 4 8v32z" fill="#4DA3FF"/><rect x="10" y="22" width="9" height="20" fill="#2A6F8F"/><rect x="33" y="16" width="8" height="26" fill="#2A6F8F"/><g fill="#FFD98A" opacity=".9"><rect x="24" y="15" width="4" height="3"/><rect x="24" y="22" width="4" height="3"/><rect x="24" y="29" width="4" height="3"/><rect x="12" y="27" width="5" height="3"/><rect x="35" y="22" width="4" height="3"/></g><path d="M2 44h44" stroke="#2FD4C4" stroke-width="2.5" opacity=".7"/></symbol>
+    <symbol id="d-abkhazia" viewBox="0 0 48 48"><circle cx="11" cy="12" r="6" fill="#FFB020"/><path d="M14 34L28 12l14 22z" fill="#1E8E7E"/><path d="M2 34l10-12 8 12z" fill="#2FD4C4"/><path d="M2 40c6-3 9 3 15 0s9 3 15 0 8 3 14 0" stroke="#4DA3FF" stroke-width="3" fill="none" stroke-linecap="round"/></symbol>
+    <symbol id="d-maldives" viewBox="0 0 48 48"><circle cx="39" cy="11" r="6" fill="#FFB020"/><path d="M12 26l12-9 12 9z" fill="#C7452C"/><rect x="15" y="26" width="18" height="10" fill="#F5EFE3"/><path d="M17 36v6M31 36v6M24 36v6" stroke="#7A5A3A" stroke-width="2.5"/><path d="M2 43c6-3 9 3 15 0s9 3 15 0 8 3 14 0" stroke="#2FD4C4" stroke-width="3" fill="none" stroke-linecap="round"/></symbol>
+    <symbol id="d-srilanka" viewBox="0 0 48 48"><path d="M14 40a10 10 0 0120 0z" fill="#F5EFE3"/><rect x="22" y="20" width="4" height="8" fill="#FFB020"/><path d="M24 12l2 8h-4z" fill="#FFB020"/><path d="M7 40c0-10 1-16 3-20" stroke="#7A5A3A" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M10 20c-4-4-8-4-9-1 4-1 7 1 9 3zM10 20c4-4 8-3 9 0-4-1-7 1-9 2zM10 20c0-5 3-8 6-8-3 2-4 5-4 8z" fill="#1E8E7E"/><path d="M2 43h44" stroke="#FFB020" stroke-width="2.5" opacity=".6"/></symbol>
+    <symbol id="d-thailand" viewBox="0 0 48 48"><path d="M24 4l3 9h-6z" fill="#FFB020"/><path d="M10 25l14-11 14 11z" fill="#C7452C"/><path d="M5 35l19-10 19 10z" fill="#FF6A45"/><rect x="14" y="35" width="20" height="7" fill="#FFD98A"/><path d="M2 44h44" stroke="#FFB020" stroke-width="2.5" opacity=".7"/></symbol>
+    <symbol id="d-vietnam" viewBox="0 0 48 48"><path d="M3 31c2-10 6-15 8-15s6 5 8 15z" fill="#1E8E7E"/><path d="M21 31c2-13 6-19 9-19s7 6 9 19z" fill="#2FD4C4"/><path d="M14 40h20l-4 5H18z" fill="#C7452C"/><path d="M24 40V26l8 9z" fill="#FF6A45"/><path d="M2 45c6-2 10 2 16 0s10 2 16 0 8 2 12 0" stroke="#4DA3FF" stroke-width="2.5" fill="none" stroke-linecap="round"/></symbol>
+    <symbol id="d-hainan" viewBox="0 0 48 48"><circle cx="37" cy="12" r="7" fill="#FF6A45"/><path d="M16 40c0-12 2-18 4-22" stroke="#7A5A3A" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M20 18c-6-5-12-4-14 0 5-2 10 0 13 3zM20 18c6-5 12-4 14 0-5-2-10 0-13 3zM20 18c-1-7 2-11 6-12-3 4-4 8-3 12z" fill="#1E8E7E"/><path d="M2 43c6-3 9 3 15 0s9 3 15 0 8 3 14 0" stroke="#2FD4C4" stroke-width="3" fill="none" stroke-linecap="round"/></symbol>
+    <symbol id="d-bali" viewBox="0 0 48 48"><circle cx="24" cy="15" r="6" fill="#FFB020"/><path d="M6 42l4-26 6 4v22z" fill="#C7452C"/><path d="M42 42l-4-26-6 4v22z" fill="#C7452C"/><path d="M10 17l6 4M38 17l-6 4" stroke="#FFB020" stroke-width="2"/><path d="M2 44h44" stroke="#FFD98A" stroke-width="2.5" opacity=".6"/></symbol>
+    <symbol id="d-goa" viewBox="0 0 48 48"><circle cx="22" cy="26" r="12" fill="#FF6A45"/><path d="M2 33h40" stroke="#FFB020" stroke-width="2" opacity=".65"/><path d="M35 42c0-10-2-16-4-20" stroke="#7A5A3A" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M31 22c-5-4-10-3-12 1 4-2 8-1 11 2zM31 22c5-4 10-3 12 1-4-2-8-1-11 2z" fill="#1E8E7E"/><path d="M2 43c6-3 9 3 15 0s9 3 15 0 8 3 14 0" stroke="#2FD4C4" stroke-width="3" fill="none" stroke-linecap="round"/></symbol>
+    <symbol id="d-unsure" viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="#FF4D9D" stroke-width="2.5"/><path d="M32 16l-6 12-12 6 6-12z" fill="#FFB020"/><circle cx="24" cy="24" r="2.6" fill="#EAF3F8"/></symbol>
+
+    <!-- типы отелей -->
+    <symbol id="h-city" viewBox="0 0 48 48"><rect x="6" y="16" width="12" height="26" rx="2" fill="#4DA3FF"/><rect x="20" y="8" width="10" height="34" rx="2" fill="#2A6F8F"/><rect x="32" y="22" width="10" height="20" rx="2" fill="#2FD4C4"/><g fill="#04121d" opacity=".55"><rect x="9" y="20" width="3" height="3"/><rect x="14" y="20" width="3" height="3"/><rect x="9" y="27" width="3" height="3"/><rect x="14" y="27" width="3" height="3"/><rect x="23" y="13" width="4" height="3"/><rect x="23" y="20" width="4" height="3"/><rect x="23" y="27" width="4" height="3"/><rect x="35" y="27" width="4" height="3"/></g><path d="M2 44h44" stroke="#EAF3F8" stroke-width="2" opacity=".4"/></symbol>
+    <symbol id="h-beach" viewBox="0 0 48 48"><circle cx="39" cy="10" r="6" fill="#FFB020"/><path d="M8 24a16 16 0 0132 0z" fill="#FF6A45"/><path d="M24 8c-4 0-8 7-8 16h8z" fill="#FFD98A"/><path d="M24 24v15" stroke="#7A5A3A" stroke-width="2.5" stroke-linecap="round"/><path d="M2 42c6-3 9 3 15 0s9 3 15 0 8 3 14 0" stroke="#2FD4C4" stroke-width="3" fill="none" stroke-linecap="round"/></symbol>
+    <symbol id="h-party" viewBox="0 0 48 48"><path d="M24 4v5" stroke="#EAF3F8" stroke-width="2"/><circle cx="24" cy="22" r="13" fill="#FF4D9D"/><g stroke="#04121d" stroke-width="1.2" opacity=".45" fill="none"><path d="M11 22h26M13 15h22M13 29h22M24 9v26M17 10.5v23M31 10.5v23"/></g><path d="M7 41l4-6M41 41l-4-6M24 43v-5" stroke="#FFB020" stroke-width="2.5" stroke-linecap="round"/><circle cx="8" cy="12" r="2" fill="#B6E82A"/><circle cx="41" cy="14" r="2.5" fill="#4DA3FF"/></symbol>
+    <symbol id="h-family" viewBox="0 0 48 48"><circle cx="17" cy="14" r="6" fill="#4DA3FF"/><path d="M7 42v-8a10 10 0 0120 0v8z" fill="#4DA3FF"/><circle cx="34" cy="23" r="4.5" fill="#FFB020"/><path d="M26 42v-6a8 8 0 0116 0v6z" fill="#FFB020"/></symbol>
+    <symbol id="h-spa" viewBox="0 0 48 48"><circle cx="24" cy="7" r="2.5" fill="#FFB020"/><path d="M24 11c5 6 5 14 0 20-5-6-5-14 0-20z" fill="#2FD4C4"/><path d="M8 21c8 0 14 5 16 12-8 1-15-4-16-12z" fill="#1E8E7E"/><path d="M40 21c-8 0-14 5-16 12 8 1 15-4 16-12z" fill="#1E8E7E"/><path d="M4 34c8 6 28 6 40 0-6 9-34 9-40 0z" fill="#4DA3FF"/></symbol>
+    <symbol id="h-adults" viewBox="0 0 48 48"><rect x="4" y="12" width="40" height="24" rx="8" fill="#FF4D9D"/><text x="24" y="30" text-anchor="middle" font-family="Manrope,Arial,sans-serif" font-size="15" font-weight="800" fill="#04121d">18+</text></symbol>
+    <symbol id="h-eco" viewBox="0 0 48 48"><circle cx="38" cy="12" r="5" fill="#FFB020" opacity=".9"/><path d="M24 12l14 28H10z" fill="#B6E82A"/><path d="M24 12l6 28h-6z" fill="#1E8E7E"/><path d="M24 27l-5 13h10z" fill="#04121d" opacity=".5"/><path d="M2 42h44" stroke="#7A5A3A" stroke-width="2.5" stroke-linecap="round"/></symbol>
+    <symbol id="h-apart" viewBox="0 0 48 48"><rect x="8" y="8" width="20" height="34" rx="3" fill="#2A6F8F"/><circle cx="23" cy="26" r="2" fill="#FFB020"/><circle cx="37" cy="18" r="5" fill="none" stroke="#FFB020" stroke-width="3"/><path d="M37 23v13M37 30h4M37 34h4" stroke="#FFB020" stroke-width="3" stroke-linecap="round"/><path d="M2 44h44" stroke="#EAF3F8" stroke-width="2" opacity=".35"/></symbol>
+  </svg>
+
+  <!-- ==================== ФОН ==================== -->
+  <div class="bg" aria-hidden="true">
+    <div class="mesh"></div>
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div>
+    <div class="dots"></div>
+    <svg class="sky" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <path id="arc1" class="arc" d="M-80 660 C 320 420, 880 340, 1520 120"/>
+      <path id="arc2" class="arc" d="M-80 200 C 400 120, 900 520, 1520 700" style="animation-delay:-1.4s"/>
+      <g class="plane" fill="#FFB020" opacity=".85">
+        <path d="M-9 -6 L11 0 L-9 6 L-5 0 Z"/>
+        <animateMotion dur="30s" repeatCount="indefinite" rotate="auto" href="#arc1" xlink:href="#arc1"><mpath href="#arc1" xlink:href="#arc1"/></animateMotion>
+      </g>
+      <g class="plane" fill="#2FD4C4" opacity=".7">
+        <path d="M-7 -5 L9 0 L-7 5 L-4 0 Z"/>
+        <animateMotion dur="42s" begin="-8s" repeatCount="indefinite" rotate="auto" href="#arc2" xlink:href="#arc2"><mpath href="#arc2" xlink:href="#arc2"/></animateMotion>
+      </g>
+    </svg>
+    <div class="grain"></div>
+    <div class="vig"></div>
+  </div>
+
+  <!-- ==================== ШАПКА ==================== -->
+  <header class="topbar" id="topbar">
+    <a class="brand" href="#top" data-scroll>
+      <span class="mark"><svg><use href="#u-plane-f"/></svg></span>
+      <span><b>Маршрут построен 21</b><span>Чебоксары · турагентство</span></span>
+    </a>
+    <div class="experts">
+      <span class="ava"><i>Л</i><i>О</i></span>
+      <p><b>Лидия и Ольга</b>турэксперты · ответим в ближайшее время</p>
+    </div>
+    <div class="topActions">
+      <a class="telbtn" href="tel:+79320629616"><svg><use href="#u-phone"/></svg><span>+7 932 062-96-16</span></a>
+      <button class="maxbtn" type="button" data-send="max"><svg><use href="#u-chat"/></svg><span>Написать в MAX</span></button>
+      <button class="iconbtn" type="button" id="resetBtn" title="Начать заново" aria-label="Начать заново"><svg><use href="#u-refresh"/></svg></button>
+    </div>
+    <div class="topProg"><i id="topProg"></i></div>
+  </header>
+
+  <!-- ==================== СЦЕНА ==================== -->
+  <main class="stage" id="top">
+    <section class="intro">
+      <span class="eyebrow"><i></i>маршрут21.рф · подбор тура онлайн</span>
+      <h1>Соберём ваш <em>маршрут</em><br>за 8 коротких шагов</h1>
+      <p class="lede">Отметьте, куда хотите — от Сочи и Кавказа до Москвы, Питера и Турции. Лидия и Ольга сравнят туроператоров и пришлют 3–5 живых вариантов с ценами. Бесплатно и без обязательств.</p>
+      <ul class="trust">
+        <li><svg><use href="#u-shield"/></svg>Реестр турагентов РТА 0044374</li>
+        <li><svg><use href="#u-spark"/></svg>Подбор бесплатный</li>
+        <li><svg><use href="#u-clock"/></svg>Ответим в ближайшее время</li>
+        <li><svg><use href="#u-pin"/></svg>Чебоксары, Ф. Энгельса, 11к1, оф. 3</li>
+      </ul>
+    </section>
+
+    <div class="resume" id="resumeBar" hidden>
+      <svg><use href="#u-ticket"/></svg>
+      <p id="resumeText"></p>
+      <button class="rbtn" type="button" id="resumeGo">Продолжить</button>
+      <button class="rbtn ghost" type="button" id="resumeReset">Начать заново</button>
+    </div>
+
+    <noscript>
+      <div class="noscript">Для онлайн-подбора тура включите JavaScript или просто позвоните нам: <a href="tel:+79320629616">+7 932 062-96-16</a>. Лидия и Ольга подберут тур голосом за 5 минут.</div>
+    </noscript>
+
+    <div class="layout">
+      <!-- ============ КВИЗ ============ -->
+      <section class="card" id="card" aria-label="Подбор тура по шагам">
+        <div class="railScroll" id="railScroll">
+          <div class="rail" id="rail">
+            <span class="railPlane" id="railPlane"><svg><use href="#u-plane-f"/></svg></span>
+          </div>
+        </div>
+
+        <div class="stepsWrap" id="stepsWrap">
+          <!-- ШАГ 1 -->
+          <section class="step" data-step="1" role="group" aria-labelledby="t1">
+            <div class="stepHead">
+              <span class="stepNum">Шаг <b>01</b> / 08</span>
+              <h2 id="t1">Куда летим?</h2>
+              <p class="stepSub">Можно выбрать до трёх направлений — сравним цены и покажем, где в ваши даты выгоднее.</p>
+            </div>
+            <div class="dirTools">
+              <div class="search">
+                <svg><use href="#u-search"/></svg>
+                <input type="text" id="dirSearch" inputmode="search" placeholder="Сочи, горы, море, без визы…" aria-label="Поиск направления" autocomplete="off">
+                <button class="clr" type="button" id="dirSearchClear" hidden aria-label="Очистить поиск"><svg><use href="#u-close"/></svg></button>
+              </div>
+              <div class="filters" id="dirFilters" role="tablist" aria-label="Группы направлений"></div>
+            </div>
+            <div class="selRow" id="dirSelected" hidden></div>
+            <div class="grid c3" id="dirGrid" role="group" aria-label="Направления"></div>
+            <div class="empty" id="dirEmpty" hidden>
+              <p>Такого направления в списке нет — но мы возим и туда. Напишите нам, подберём вручную.</p>
+              <div class="row">
+                <button class="btn ghost" type="button" id="dirEmptyReset">Сбросить поиск</button>
+                <button class="btn primary" type="button" data-send="max" style="margin:0">Спросить в MAX</button>
+              </div>
+            </div>
+            <p class="err" data-err="1" hidden><svg><use href="#u-info"/></svg><span></span></p>
+          </section>
+
+          <!-- ШАГ 2 -->
+          <section class="step" data-step="2" role="group" aria-labelledby="t2">
+            <div class="stepHead">
+              <span class="stepNum">Шаг <b>02</b> / 08</span>
+              <h2 id="t2">Откуда вылетаем?</h2>
+              <p class="stepSub">Сравним вылеты из соседних городов: разница в цене часто перекрывает дорогу до аэропорта.</p>
+            </div>
+            <div class="grid c2" id="cityGrid" role="radiogroup" aria-label="Город вылета"></div>
+            <label class="field" id="cityOtherWrap" hidden style="margin-top:12px">
+              <span>Ваш город вылета</span>
+              <input type="text" id="cityOther" placeholder="Например, Уфа или Йошкар-Ола" maxlength="40" autocomplete="off">
+            </label>
+            <div class="note"><svg><use href="#u-info"/></svg><span><b>Нижний Новгород</b> — теперь в списке: из Стригино больше прямых чартеров, чем из Чебоксар. Часто тур оттуда дешевле даже с дорогой до аэропорта. Посчитаем оба варианта.</span></div>
+            <p class="err" data-err="2" hidden><svg><use href="#u-info"/></svg><span></span></p>
+          </section>
+
+          <!-- ШАГ 3 -->
+          <section class="step" data-step="3" role="group" aria-labelledby="t3">
+            <div class="stepHead">
+              <span class="stepNum">Шаг <b>03</b> / 08</span>
+              <h2 id="t3">Когда и на сколько?</h2>
+              <p class="stepSub">Даты могут быть примерными — мы проверим соседние дни и найдём самый дешёвый вылет.</p>
+            </div>
+            <div class="blockLabel"><svg><use href="#u-cal"/></svg>Месяц поездки</div>
+            <div class="chips" id="monthGrid" role="radiogroup" aria-label="Месяц поездки"></div>
+            <div class="row2" style="margin-top:16px">
+              <div class="panel">
+                <div class="pTitle"><svg><use href="#u-clock"/></svg>Сколько ночей</div>
+                <div class="rngHead"><b id="nightsVal">7<i>ночей</i></b><span id="nightsHint">оптимально для моря</span></div>
+                <input class="rng" type="range" id="nightsRange" min="2" max="21" step="1" value="7" aria-label="Количество ночей">
+                <div class="rngScale"><span>2</span><span>10</span><span>21</span></div>
+                <div class="presets" id="nightsPresets" style="margin:12px 0 0"></div>
+              </div>
+              <div class="panel">
+                <div class="pTitle"><svg><use href="#u-cal"/></svg>Точная дата <em style="font-style:normal;color:var(--dim);font-weight:400">— если знаете</em></div>
+                <label class="field" style="margin:0">
+                  <input type="date" id="exactDate" aria-label="Точная дата вылета">
+                </label>
+                <button class="toggle" type="button" id="flexToggle" role="switch" aria-checked="true">
+                  <span class="sw"></span>
+                  <span><b>Гибкие даты ±3 дня</b><span>Проверим соседние вылеты — так дешевле</span></span>
+                </button>
+              </div>
+            </div>
+            <p class="err" data-err="3" hidden><svg><use href="#u-info"/></svg><span></span></p>
+          </section>
+
+          <!-- ШАГ 4 -->
+          <section class="step" data-step="4" role="group" aria-labelledby="t4">
+            <div class="stepHead">
+              <span class="stepNum">Шаг <b>04</b> / 08</span>
+              <h2 id="t4">Кто едет?</h2>
+              <p class="stepSub">От количества и возраста детей зависит и билет, и номер, и итоговая цена.</p>
+            </div>
+            <div class="presets" id="peoplePresets"></div>
+            <div class="row2">
+              <div class="panel">
+                <div class="pTitle"><svg><use href="#u-users"/></svg>Взрослые</div>
+                <div class="stepper">
+                  <button type="button" data-act="adults-" aria-label="Меньше взрослых">−</button>
+                  <span class="val"><b id="adultsVal">2</b><span id="adultsWord">взрослых</span></span>
+                  <button type="button" data-act="adults+" aria-label="Больше взрослых">+</button>
+                </div>
+              </div>
+              <div class="panel">
+                <div class="pTitle"><svg><use href="#u-users"/></svg>Дети до 17 лет</div>
+                <div class="stepper">
+                  <button type="button" data-act="kids-" aria-label="Меньше детей">−</button>
+                  <span class="val"><b id="kidsVal">0</b><span id="kidsWord">детей</span></span>
+                  <button type="button" data-act="kids+" aria-label="Больше детей">+</button>
+                </div>
+              </div>
+            </div>
+            <div id="agesWrap" hidden>
+              <div class="blockLabel"><svg><use href="#u-spark"/></svg>Возраст детей <em>на дату возвращения</em></div>
+              <div class="ageChips" id="agesGrid" role="group" aria-label="Возраст детей"></div>
+              <div class="note"><svg><use href="#u-info"/></svg><span>Дети до 2 лет летят почти бесплатно, с 2 до 12 — детский тариф. Отель считает ребёнка «взрослым» с 12–14 лет: точный возраст экономит реальные деньги.</span></div>
+            </div>
+            <p class="err" data-err="4" hidden><svg><use href="#u-info"/></svg><span></span></p>
+          </section>
+
+          <!-- ШАГ 5 -->
+          <section class="step" data-step="5" role="group" aria-labelledby="t5">
+            <div class="stepHead">
+              <span class="stepNum">Шаг <b>05</b> / 08</span>
+              <h2 id="t5">Какой отель вам ближе?</h2>
+              <p class="stepSub">Выберите до двух форматов — например «пляжный + семейный» или «городской + тусовочный».</p>
+            </div>
+            <div class="grid c2" id="typeGrid" role="group" aria-label="Тип отеля"></div>
+            <div class="note"><svg><use href="#u-spark"/></svg><span><b>Городской</b> — центр и прогулки, <b>пляжный</b> — море в шаге, <b>тусовочный</b> — бич-клубы и музыка. Это не звёзды, а характер отеля: пятёрка тоже бывает тихой или, наоборот, громкой.</span></div>
+            <p class="err" data-err="5" hidden><svg><use href="#u-info"/></svg><span></span></p>
+          </section>
+
+          <!-- ШАГ 6 -->
+          <section class="step" data-step="6" role="group" aria-labelledby="t6">
+            <div class="stepHead">
+              <span class="stepNum">Шаг <b>06</b> / 08</span>
+              <h2 id="t6">Уровень и питание</h2>
+              <p class="stepSub">Звёзды — про инфраструктуру. Питание — про то, сколько вы потратите на месте.</p>
+            </div>
+            <div class="blockLabel"><svg><use href="#u-star"/></svg>Уровень отеля</div>
+            <div class="seg lvl" id="starSeg" role="radiogroup" aria-label="Уровень отеля"></div>
+            <div class="blockLabel"><svg><use href="#u-hotel"/></svg>Питание</div>
+            <div class="seg" id="mealSeg" role="radiogroup" aria-label="Питание"></div>
+            <div class="note" id="levelNote"><svg><use href="#u-info"/></svg><span></span></div>
+            <p class="err" data-err="6" hidden><svg><use href="#u-info"/></svg><span></span></p>
+          </section>
+
+          <!-- ШАГ 7 -->
+          <section class="step" data-step="7" role="group" aria-labelledby="t7">
+            <div class="stepHead">
+              <span class="stepNum">Шаг <b>07</b> / 08</span>
+              <h2 id="t7">Бюджет поездки</h2>
+              <p class="stepSub">Сумма на всех, вместе с дорогой. Мы не «дотягиваем» до бюджета — мы укладываемся в него.</p>
+            </div>
+            <div class="panel">
+              <div class="rngHead">
+                <b id="budgetVal">150 000 ₽</b>
+                <span id="budgetPer">≈ 75 000 ₽ на человека</span>
+              </div>
+              <input class="rng" type="range" id="budgetRange" min="40000" max="800000" step="10000" value="150000" aria-label="Бюджет поездки в рублях">
+              <div class="rngScale"><span>40 тыс</span><span>400 тыс</span><span>800 тыс</span></div>
+              <div class="presets" id="budgetPresets" style="margin:14px 0 0"></div>
+              <button class="toggle" type="button" id="budgetUnknown" role="switch" aria-checked="false">
+                <span class="sw"></span>
+                <span><b>Пока не знаю бюджет</b><span>Пришлём три варианта: экономный, оптимальный и «вау»</span></span>
+              </button>
+            </div>
+            <div class="note"><svg><use href="#u-wallet"/></svg><span>Оплата — напрямую туроператору по договору. Наша комиссия уже в цене тура: для вас подбор и сопровождение <b>бесплатны</b>. Возможна оплата частями — спросите нас.</span></div>
+            <p class="err" data-err="7" hidden><svg><use href="#u-info"/></svg><span></span></p>
+          </section>
+
+          <!-- ШАГ 8 -->
+          <section class="step" data-step="8" role="group" aria-labelledby="t8">
+            <div class="stepHead">
+              <span class="stepNum">Шаг <b>08</b> / 08</span>
+              <h2 id="t8">Куда прислать подборку?</h2>
+              <p class="stepSub">Никакого спама и рассылок. Только ваши варианты тура — и живые Лидия с Ольгой на связи.</p>
+            </div>
+            <div class="row2">
+              <label class="field"><span>Как к вам обращаться</span><input type="text" id="fName" placeholder="Например, Анна" maxlength="40" autocomplete="given-name"></label>
+              <label class="field"><span>Телефон для связи</span><input type="tel" id="fPhone" placeholder="+7 (___) ___-__-__" maxlength="18" inputmode="tel" autocomplete="tel"></label>
+            </div>
+            <div class="field"><span>Куда удобнее ответить</span><div class="seg" id="chanSeg" role="radiogroup" aria-label="Канал связи"></div></div>
+            <label class="field"><span>Пожелания <i>— необязательно</i></span><textarea id="fComment" rows="3" maxlength="600" placeholder="Первая линия, тихий отель, нужен ранний заезд, есть загранпаспорт до 2030…"></textarea></label>
+            <div class="quickChips" id="quickChips"></div>
+            <div class="consent" id="consentWrap">
+              <input type="checkbox" id="fConsent">
+              <label class="cbox" for="fConsent" aria-hidden="true"></label>
+              <p><label for="fConsent">Согласен(на) на</label> <button type="button" class="linkish" id="consentOpen">обработку персональных данных</button> <label for="fConsent">и получение подборки тура от ИП Емельянова Л. С.</label></p>
+            </div>
+            <p class="err" data-err="8" hidden><svg><use href="#u-info"/></svg><span></span></p>
+          </section>
+
+          <!-- ШАГ 9: РЕЗУЛЬТАТ -->
+          <section class="step" data-step="9" role="group" aria-labelledby="t9">
+            <div id="resultBox"></div>
+          </section>
+        </div>
+
+        <div class="cardFoot" id="cardFoot">
+          <button class="btn ghost" type="button" id="backBtn"><svg><use href="#u-al"/></svg>Назад</button>
+          <span class="footHint" id="footHint"></span>
+          <button class="btn primary" type="button" id="nextBtn"><span>Далее</span><svg><use href="#u-ar"/></svg></button>
+        </div>
+      </section>
+
+      <!-- ============ ТАЛОН ============ -->
+      <aside class="asideSlot" id="asideSlot">
+        <div class="passCol" id="passCol">
+          <div class="passWrap">
+            <div class="pass" id="pass">
+              <div class="passMain">
+                <div class="passStripe"></div>
+                <div class="passTop">
+                  <span class="bp">BOARDING PASS</span>
+                  <span class="lg"><i><svg><use href="#u-plane-f"/></svg></i>маршрут21.рф</span>
+                </div>
+                <div class="passRoute">
+                  <span class="pt"><span class="code" id="passFrom">CSY</span><span class="nm" id="passFromName">Чебоксары</span></span>
+                  <span class="passPath"><svg><use href="#u-plane-f"/></svg></span>
+                  <span class="pt"><span class="code" id="passTo">···</span><span class="nm" id="passToName">выберите направление</span></span>
+                </div>
+                <div class="passGrid">
+                  <span class="pf empty" id="pfDate"><u>DATE / ДАТЫ</u><b id="passDate">— —</b></span>
+                  <span class="pf" id="pfNights"><u>NIGHTS / НОЧЕЙ</u><b id="passNights">7 ночей</b></span>
+                  <span class="pf" id="pfPax"><u>PAX / ГОСТИ</u><b id="passPax">2 взр</b></span>
+                  <span class="pf empty" id="pfHotel"><u>HOTEL / ФОРМАТ</u><b id="passHotel">— —</b></span>
+                  <span class="pf" id="pfClass"><u>CLASS / УРОВЕНЬ</u><b id="passClass">4★</b></span>
+                  <span class="pf" id="pfMeal"><u>MEAL / ПИТАНИЕ</u><b id="passMeal">Не важно</b></span>
+                </div>
+                <svg class="passStamp" id="passStamp" viewBox="0 0 120 120" aria-hidden="true">
+                  <defs><path id="stampArc" d="M60,60 m-42,0 a42,42 0 1,1 84,0 a42,42 0 1,1 -84,0"/></defs>
+                  <circle cx="60" cy="60" r="52" fill="none" stroke="#136B3F" stroke-width="3"/>
+                  <circle cx="60" cy="60" r="45" fill="none" stroke="#136B3F" stroke-width="1.5"/>
+                  <text font-family="JetBrains Mono, monospace" font-size="9.5" font-weight="700" fill="#136B3F" letter-spacing="2.4">
+                    <textPath href="#stampArc" xlink:href="#stampArc" startOffset="4%">МАРШРУТ ПОСТРОЕН 21 · ЧЕБОКСАРЫ ·</textPath>
+                  </text>
+                  <text x="60" y="57" text-anchor="middle" font-family="Unbounded, Manrope, sans-serif" font-size="13" font-weight="800" fill="#136B3F">СОБРАНО</text>
+                  <text x="60" y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#136B3F" id="stampDate">—</text>
+                </svg>
+              </div>
+              <div class="passStub">
+                <div class="passBudget">
+                  <span><u>BUDGET / БЮДЖЕТ</u><b id="passBudget">150 000 ₽</b></span>
+                  <span class="passStatus" id="passStatus">Черновик</span>
+                </div>
+                <div class="passBar" id="passBarcode"></div>
+                <div class="passMeta">
+                  <span id="passTicket">MP21-0000</span>
+                  <span class="passPct">готовность <span class="passPctBar"><i id="passPctBar"></i></span><b id="passPct">0%</b></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tipCard">
+            <div class="tipHead">
+              <span class="ava"><i>Л</i><i>О</i></span>
+              <span><b>Лидия и Ольга</b><span>советуют на этом шаге</span></span>
+            </div>
+            <p id="expertTip"></p>
+          </div>
+
+          <div class="miniHelp">
+            <a href="tel:+79320629616"><svg><use href="#u-phone"/></svg>+7 932 062-96-16 — позвонить</a>
+            <a href="mailto:marshrut.postroen21@yandex.ru"><svg><use href="#u-mail"/></svg>marshrut.postroen21@yandex.ru</a>
+            <a href="#top" data-scroll><svg><use href="#u-pin"/></svg>Чебоксары, Ф. Энгельса, 11к1, офис 3</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <div class="fc">
+      <b>Маршрут построен 21</b>
+      ИП Емельянова Л. С. · ИНН 526021307960<br>
+      Реестровый номер турагента РТА 0044374<br>
+      Чебоксары, ул. Фридриха Энгельса, 11к1, офис 3
+    </div>
+    <div class="fl">
+      <a href="tel:+79320629616"><svg><use href="#u-phone"/></svg>+7 932 062-96-16</a>
+      <a href="mailto:marshrut.postroen21@yandex.ru"><svg><use href="#u-mail"/></svg>marshrut.postroen21@yandex.ru</a>
+      <a href="https://маршрут21.рф" target="_blank" rel="noopener"><svg><use href="#u-compass"/></svg>маршрут21.рф</a>
+    </div>
+    <p class="dis">Информация на сайте не является публичной офертой. Итоговая стоимость тура зависит от дат, курса туроператора и наличия мест и подтверждается при бронировании. Подбор тура и сопровождение — бесплатно для туриста: вознаграждение агентству выплачивает туроператор.</p>
+  </footer>
+
+  <!-- ==================== МОБИЛЬНАЯ ПАНЕЛЬ ==================== -->
+  <div class="mobileBar" id="mobileBar">
+    <button class="mSummary" type="button" id="mSummary" aria-label="Открыть посадочный талон">
+      <span class="mi"><svg><use href="#u-ticket"/></svg></span>
+      <span><b id="mRoute">CSY → ···</b><span id="mStep">Шаг 1 из 8 · талон</span></span>
+    </button>
+    <button class="btn primary" type="button" id="mNext"><span>Далее</span><svg><use href="#u-ar"/></svg></button>
+  </div>
+
+  <div class="scrim" id="scrim"></div>
+
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Ваш посадочный талон" aria-hidden="true">
+    <div class="sheetHead"><span class="grip"></span><b>Ваш посадочный талон</b>
+      <button class="iconbtn" type="button" id="sheetClose" aria-label="Закрыть"><svg><use href="#u-close"/></svg></button>
+    </div>
+    <div class="sheetBody" id="sheetBody"></div>
+  </div>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modalHead"><b id="modalTitle">Согласие</b>
+      <button class="iconbtn" type="button" id="modalClose" aria-label="Закрыть"><svg><use href="#u-close"/></svg></button>
+    </div>
+    <div class="modalBody" id="modalBody"></div>
+    <div class="modalFoot" id="modalFoot"></div>
+  </div>
+
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+  <p class="sr" id="live" aria-live="polite"></p>
+</div>
+
+<script>
+(function(){
+'use strict';
+document.documentElement.classList.remove('nojs');
+
+/* ============================ КОНФИГ ============================ */
+var CONFIG = {
+  phone:'+79320629616', phoneHuman:'+7 932 062-96-16', phoneDigits:'79320629616',
+  email:'marshrut.postroen21@yandex.ru', site:'маршрут21.рф',
+  maxUrl:'https://max.ru/', formUrl:'https://formsubmit.co/ajax/marshrut.postroen21@yandex.ru',
+  store:'mp21-quiz-v1'
+};
+var root=document.getElementById('mp21'), $=function(id){return document.getElementById(id)};
+var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ============================ ДАННЫЕ ============================ */
+var DIRS=[
+ {id:'krasnodar',g:'ru',n:'Краснодарский край',s:'Сочи · Адлер · Анапа · Геленджик',c:'AER',i:'d-krasnodar',t:'Хит лета',k:'сочи адлер анапа геленджик туапсе море пляж россия'},
+ {id:'kavkaz',g:'ru',n:'Кавказ',s:'Кисловодск · Домбай · Архыз · Дагестан',c:'MRV',i:'d-kavkaz',t:'Горы и нарзаны',k:'кавказ кисловодск пятигорск домбай архыз дагестан эльбрус горы санаторий лыжи россия'},
+ {id:'moscow',g:'ru',n:'Москва',s:'Выходные, каникулы, события',c:'MOW',i:'d-moscow',t:'Уик-энд',k:'москва столица красная площадь экскурсии выходные россия'},
+ {id:'spb',g:'ru',n:'Санкт-Петербург',s:'Музеи, каналы, белые ночи',c:'LED',i:'d-spb',t:'Белые ночи',k:'санкт петербург питер спб эрмитаж развод мостов белые ночи россия'},
+ {id:'kaliningrad',g:'ru',n:'Калининград',s:'Балтика, дюны, европейские улочки',c:'KGD',i:'d-kaliningrad',k:'калининград балтика куршская коса зеленоградск светлогорск россия'},
+ {id:'karelia',g:'ru',n:'Карелия',s:'Ладога, Рускеала, водопады',c:'PES',i:'d-karelia',k:'карелия ладога рускеала петрозаводск природа россия'},
+ {id:'altai',g:'ru',n:'Алтай',s:'Чемал, Катунь, горные базы',c:'RGK',i:'d-altai',k:'алтай горно-алтайск чемал катунь природа россия'},
+ {id:'baikal',g:'ru',n:'Байкал',s:'Иркутск, Ольхон, зимний лёд',c:'IKT',i:'d-baikal',k:'байкал иркутск ольхон лед природа россия'},
+ {id:'turkey',g:'sea',n:'Турция',s:'Анталья · Кемер · Белек · всё включено',c:'AYT',i:'d-turkey',t:'Хит',k:'турция анталья кемер белек аланья сиде все включено море'},
+ {id:'egypt',g:'sea',n:'Египет',s:'Хургада, Шарм — море круглый год',c:'HRG',i:'d-egypt',t:'Зимой тепло',k:'египет хургада шарм-эль-шейх море риф зима'},
+ {id:'uae',g:'sea',n:'ОАЭ',s:'Дубай, Шарджа, Рас-эль-Хайма',c:'DXB',i:'d-uae',k:'оаэ дубай шарджа рас-эль-хайма фуджейра шопинг'},
+ {id:'abkhazia',g:'sea',n:'Абхазия',s:'Гагра, Пицунда, Новый Афон',c:'AER',i:'d-abkhazia',t:'Без визы',k:'абхазия гагра пицунда новый афон сухум море бюджет'},
+ {id:'maldives',g:'sea',n:'Мальдивы',s:'Атоллы и виллы над водой',c:'MLE',i:'d-maldives',k:'мальдивы атолл вилла океан медовый месяц премиум'},
+ {id:'srilanka',g:'sea',n:'Шри-Ланка',s:'Океан, чайные плантации, слоны',c:'CMB',i:'d-srilanka',k:'шри-ланка цейлон океан чай слоны серфинг'},
+ {id:'thailand',g:'asia',n:'Таиланд',s:'Пхукет, Паттайя, Самуи',c:'HKT',i:'d-thailand',t:'Зимой тепло',k:'таиланд пхукет паттайя самуи бангкок море зима'},
+ {id:'vietnam',g:'asia',n:'Вьетнам',s:'Нячанг, Фукуок, Дананг',c:'CXR',i:'d-vietnam',k:'вьетнам нячанг фукуок дананг море'},
+ {id:'hainan',g:'asia',n:'Хайнань · Китай',s:'Санья — тропики без визы',c:'SYX',i:'d-hainan',t:'Без визы',k:'хайнань китай санья тропики без визы море'},
+ {id:'bali',g:'asia',n:'Бали',s:'Убуд, Семиньяк, вулканы и рис',c:'DPS',i:'d-bali',k:'бали индонезия убуд семиньяк серфинг йога'},
+ {id:'goa',g:'asia',n:'Индия · Гоа',s:'Пляжи, йога, закаты',c:'GOI',i:'d-goa',k:'индия гоа йога пляж закаты'},
+ {id:'unsure',g:'all',n:'Не определился',s:'Подберите под наши даты и бюджет',c:'???',i:'d-unsure',k:'не знаю подскажите любое'}
+];
+var GROUPS=[{id:'all',n:'Все'},{id:'ru',n:'Россия'},{id:'sea',n:'Море и пляж'},{id:'asia',n:'Азия и экзотика'}];
+var CITIES=[
+ {id:'cheboksary',n:'Чебоксары',s:'Аэропорт Чебоксары · ближе всего',c:'CSY',i:'u-plane'},
+ {id:'nn',n:'Нижний Новгород',s:'Стригино · больше прямых рейсов',c:'GOJ',i:'u-plane',t:'Новое',tn:1},
+ {id:'kazan',n:'Казань',s:'≈2 часа на авто от Чебоксар',c:'KZN',i:'u-plane'},
+ {id:'moscow',n:'Москва',s:'Шереметьево · Внуково · Домодедово',c:'MOW',i:'u-plane'},
+ {id:'spb',n:'Санкт-Петербург',s:'Пулково',c:'LED',i:'u-plane'},
+ {id:'samara',n:'Самара',s:'Курумоч',c:'KUF',i:'u-plane'},
+ {id:'ground',n:'Без перелёта',s:'Поезд или свой автомобиль',c:'ЖД',i:'u-train'},
+ {id:'other',n:'Другой город',s:'Напишем свой вариант',c:'???',i:'u-pin'}
+];
+var TYPES=[
+ {id:'city',n:'Городской',s:'Центр, метро рядом, музеи и прогулки',i:'h-city'},
+ {id:'beach',n:'Пляжный',s:'Первая линия, свой пляж, море в шаге',i:'h-beach'},
+ {id:'party',n:'Тусовочный',s:'Бич-клубы, бары, музыка и анимация',i:'h-party'},
+ {id:'family',n:'Семейный',s:'Детский клуб, аквапарк, спокойные ночи',i:'h-family'},
+ {id:'spa',n:'СПА и релакс',s:'Термы, хаммам, тишина и процедуры',i:'h-spa'},
+ {id:'adults',n:'Adults only 18+',s:'Только для взрослых, без детей',i:'h-adults'},
+ {id:'eco',n:'Эко и природа',s:'Горы, лес, глэмпинг, санатории',i:'h-eco'},
+ {id:'apart',n:'Апартаменты',s:'Кухня и стиралка — живём как дома',i:'h-apart'}
+];
+var STARS=[{id:'3',n:'3',s:'Разумно'},{id:'4',n:'4',s:'Комфорт'},{id:'5',n:'5',s:'Премиум'},{id:'guest',n:'Дом',s:'Гостевой, база'},{id:'any',n:'?',s:'Подскажете'}];
+var MEALS=[{id:'all',n:'Всё включено'},{id:'bb',n:'Завтраки'},{id:'fb',n:'Полный пансион'},{id:'ro',n:'Без питания'},{id:'any',n:'Не важно'}];
+var CHANS=[{id:'max',n:'MAX',i:'u-chat'},{id:'wa',n:'WhatsApp',i:'u-chat'},{id:'tg',n:'Telegram',i:'u-plane'},{id:'call',n:'Звонок',i:'u-phone'}];
+var RAIL=['Куда','Откуда','Даты','Кто','Отель','Уровень','Бюджет','Контакты'];
+var ACC={1:'#2FD4C4',2:'#4DA3FF',3:'#FFB020',4:'#FF6A45',5:'#FF4D9D',6:'#B6E82A',7:'#8C7BFF',8:'#FFB020',9:'#33D68A'};
+var MN=['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+var MS=['Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт','Ноя','Дек'];
+var QUICK=['Только первая линия','Нужен ранний заезд','Только прямые рейсы','Тихий отель, без анимации','Загранпаспорт есть','Нужна рассрочка','Хочём у моря','Везём коляску'];
+var MONTHS=(function(){var out=[],d=new Date();for(var i=0;i<12;i++){var t=new Date(d.getFullYear(),d.getMonth()+i,1),m=t.getMonth();
+  var tag=m===11?'Новый год':m===0?'Каникулы':m===4?'Майские':(m>=5&&m<=7)?'Лето':m===8?'Бархат':'';
+  out.push({key:t.getFullYear()+'-'+m,m:m,y:t.getFullYear(),n:MS[m],full:MN[m],tag:tag,cls:m>=5&&m<=7?'summer':m===8?'velvet':''});}return out;})();
+
+/* ============================ СОСТОЯНИЕ ============================ */
+var DEF={step:1,maxStep:1,dirs:[],city:'cheboksary',cityOther:'',month:'',exact:'',nights:7,flex:true,
+  adults:2,kids:0,ages:[],types:[],stars:'4',meal:'any',budget:150000,budgetUnknown:false,
+  name:'',phone:'',channel:'max',comment:'',consent:false,sent:false,delivered:false};
+var S=JSON.parse(JSON.stringify(DEF)), savedStep=0, sending=false, dirFilter='all', dirQuery='', autoTimer=null, undoBackup=null;
+
+function save(){try{localStorage.setItem(CONFIG.store,JSON.stringify(S))}catch(e){}}
+function load(){
+  try{var raw=localStorage.getItem(CONFIG.store);if(!raw)return false;var o=JSON.parse(raw);if(!o||typeof o!=='object')return false;
+    for(var k in DEF){if(o[k]!==undefined&&o[k]!==null)S[k]=o[k];}
+    if(!Array.isArray(S.dirs))S.dirs=[];if(!Array.isArray(S.types))S.types=[];if(!Array.isArray(S.ages))S.ages=[];
+    S.sent=false;S.delivered=false;savedStep=Math.min(Math.max(1,S.step|0),8);S.step=1;S.maxStep=Math.min(Math.max(1,S.maxStep|0),8);
+    return savedStep>1||S.dirs.length>0||S.name||S.phone;
+  }catch(e){return false}
+}
+
+/* ============================ УТИЛИТЫ ============================ */
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function rub(v){return new Intl.NumberFormat('ru-RU').format(Math.round(v))+' ₽'}
+function plural(n,a,b,c){var m=n%100;if(m>=11&&m<=14)return c;var k=n%10;return k===1?a:(k>=2&&k<=4?b:c)}
+function nightsWord(n){return plural(n,'ночь','ночи','ночей')}
+function adultsWord(n){return plural(n,'взрослый','взрослых','взрослых')}
+function kidsWord(n){return plural(n,'ребёнок','ребёнка','детей')}
+function dirById(id){for(var i=0;i<DIRS.length;i++)if(DIRS[i].id===id)return DIRS[i];return null}
+function cityById(id){for(var i=0;i<CITIES.length;i++)if(CITIES[i].id===id)return CITIES[i];return CITIES[0]}
+function typeById(id){for(var i=0;i<TYPES.length;i++)if(TYPES[i].id===id)return TYPES[i];return null}
+function monthByKey(k){for(var i=0;i<MONTHS.length;i++)if(MONTHS[i].key===k)return MONTHS[i];return null}
+function ico(id,cls){return '<svg'+(cls?' class="'+cls+'"':'')+' aria-hidden="true"><use href="#'+id+'"/></svg>'}
+function cityName(){return S.city==='other'?(S.cityOther.trim()||'Другой город'):cityById(S.city).n}
+function cityCode(){if(S.city==='other'){var t=S.cityOther.trim();return t?t.slice(0,3).toUpperCase():'???'}return cityById(S.city).c}
+function dirsLabel(){if(!S.dirs.length)return '';return S.dirs.map(function(id){var d=dirById(id);return d?d.n:''}).filter(Boolean).join(', ')}
+function typesLabel(){return S.types.map(function(id){var t=typeById(id);return t?t.n:''}).filter(Boolean).join(' + ')}
+function starsLabel(){for(var i=0;i<STARS.length;i++)if(STARS[i].id===S.stars)return STARS[i].id==='any'?'Любой':STARS[i].id==='guest'?'Гостевой дом':STARS[i].n+'★';return '4★'}
+function mealLabel(){for(var i=0;i<MEALS.length;i++)if(MEALS[i].id===S.meal)return MEALS[i].n;return 'Не важно'}
+function chanLabel(){for(var i=0;i<CHANS.length;i++)if(CHANS[i].id===S.channel)return CHANS[i].n;return 'MAX'}
+function paxLabel(){var s=S.adults+' '+adultsWord(S.adults);if(S.kids)s+=' + '+S.kids+' '+kidsWord(S.kids)+(S.ages.length?' ('+S.ages.slice().sort(function(a,b){return a-b}).join(', ')+' '+plural(S.ages.length,'год','года','лет')+')':'');return s}
+function paxShort(){return S.adults+' взр'+(S.kids?' · '+S.kids+' реб':'')}
+function whenLabel(){var m=monthByKey(S.month),p=[];if(S.exact){var d=new Date(S.exact+'T00:00:00');if(!isNaN(d))p.push(('0'+d.getDate()).slice(-2)+'.'+('0'+(d.getMonth()+1)).slice(-2)+'.'+d.getFullYear())}
+  else if(m)p.push(m.full+' '+m.y);
+  p.push(S.nights+' '+nightsWord(S.nights));if(S.flex)p.push('даты гибкие ±3 дня');return p.join(' · ')}
+function dateShort(){if(S.exact){var d=new Date(S.exact+'T00:00:00');if(!isNaN(d))return ('0'+d.getDate()).slice(-2)+'.'+('0'+(d.getMonth()+1)).slice(-2)+'.'+String(d.getFullYear()).slice(2)}
+  var m=monthByKey(S.month);return m?m.n+' '+String(m.y).slice(2):'— —'}
+function budgetLabel(){return S.budgetUnknown?'Подскажем варианты':rub(S.budget)}
+function fmtPhone(d){if(!d)return '';var o='+7';if(d.length>1)o+=' ('+d.slice(1,4);if(d.length>=4)o+=') '+d.slice(4,7);if(d.length>=7)o+='-'+d.slice(7,9);if(d.length>=9)o+='-'+d.slice(9,11);return o}
+function maskPhone(v){var d=String(v).replace(/\D/g,'');if(!d)return '';if(d[0]==='8')d='7'+d.slice(1);if(d[0]!=='7')d='7'+d;d=d.slice(0,11);return fmtPhone(d)}
+function hash(str){var h=2166136261;for(var i=0;i<str.length;i++){h^=str.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
+function ticketId(){var h=hash(JSON.stringify([S.dirs,S.city,S.month,S.nights,S.adults,S.kids,S.types,S.stars,S.budget,S.phone]));
+  return 'MP21-'+('000'+(h%46656).toString(36).toUpperCase()).slice(-4)+'-'+('0'+(h%97)).slice(-2)}
+function barcodeSVG(seed){var h=hash(seed)||1,x=0,out='';function rnd(){h=(Math.imul(h,1664525)+1013904223)>>>0;return h/4294967296}
+  while(x<250){var w=1+Math.round(rnd()*3);if(rnd()>.32)out+='<rect x="'+x+'" y="0" width="'+w+'" height="34" fill="currentColor"/>';x+=w+1+Math.round(rnd()*2)}
+  return '<svg viewBox="0 0 '+x+' 34" preserveAspectRatio="none" aria-hidden="true">'+out+'</svg>'}
+
+/* ============================ ТОСТЫ / МОДАЛКИ ============================ */
+var toasts=$('toasts');
+function toast(msg,kind,action){
+  var el=document.createElement('div');el.className='toast '+(kind||'');
+  var icon=kind==='ok'?'u-check':kind==='bad'?'u-info':kind==='warn'?'u-info':'u-spark';
+  el.innerHTML=ico(icon)+'<p>'+esc(msg)+'</p>';
+  if(action){var b=document.createElement('button');b.type='button';b.textContent=action.label;
+    b.addEventListener('click',function(){action.fn();close()});el.appendChild(b)}
+  toasts.appendChild(el);
+  var t=setTimeout(close,action?7000:4200);
+  function close(){clearTimeout(t);if(!el.parentNode)return;el.classList.add('out');setTimeout(function(){el.remove()},300)}
+  while(toasts.children.length>3)toasts.firstChild.remove();
+  return close;
+}
+var lastFocus=null;
+function openModal(title,body,foot){
+  lastFocus=document.activeElement;$('modalTitle').textContent=title;$('modalBody').innerHTML=body;
+  $('modalFoot').innerHTML=foot||'<button class="btn ghost" type="button" data-close-modal>Закрыть</button>';
+  $('modal').classList.add('on');$('modal').setAttribute('aria-hidden','false');$('scrim').classList.add('on');
+  document.body.style.overflow='hidden';
+  setTimeout(function(){var f=$('modal').querySelector('textarea,button,input');if(f)f.focus()},60);
+}
+function closeModal(){
+  $('modal').classList.remove('on');$('modal').setAttribute('aria-hidden','true');
+  if(!$('sheet').classList.contains('on')){$('scrim').classList.remove('on');document.body.style.overflow=''}
+  if(lastFocus&&lastFocus.focus)lastFocus.focus();
+}
+function openSheet(){
+  lastFocus=document.activeElement;$('sheet').classList.add('on');$('sheet').setAttribute('aria-hidden','false');
+  $('scrim').classList.add('on');document.body.style.overflow='hidden';setTimeout(function(){$('sheetClose').focus()},80);
+}
+function closeSheet(){
+  $('sheet').classList.remove('on');$('sheet').setAttribute('aria-hidden','true');
+  if(!$('modal').classList.contains('on')){$('scrim').classList.remove('on');document.body.style.overflow=''}
+  if(lastFocus&&lastFocus.focus)lastFocus.focus();
+}
+$('modalClose').addEventListener('click',closeModal);
+$('sheetClose').addEventListener('click',closeSheet);
+$('scrim').addEventListener('click',function(){closeModal();closeSheet()});
+$('modalFoot').addEventListener('click',function(e){if(e.target.closest('[data-close-modal]'))closeModal()});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){closeModal();closeSheet()}
+  if(e.key==='Tab'){
+    var box=$('modal').classList.contains('on')?$('modal'):$('sheet').classList.contains('on')?$('sheet'):null;
+    if(!box)return;
+    var f=box.querySelectorAll('button,[href],input,textarea,select,[tabindex]:not([tabindex="-1"])');
+    if(!f.length)return;var first=f[0],last=f[f.length-1];
+    if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}
+    else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
+  }
+});
+
+/* ============================ ПОСТРОЕНИЕ СПИСКОВ ============================ */
+var rail=$('rail');
+RAIL.forEach(function(label,i){
+  var b=document.createElement('button');b.type='button';b.className='railDot';b.dataset.goto=String(i+1);
+  b.innerHTML='<i>'+(i+1)+'</i><span>'+label+'</span>';b.setAttribute('aria-label','Шаг '+(i+1)+': '+label);
+  rail.appendChild(b);
+});
+var railDots=[].slice.call(rail.querySelectorAll('.railDot'));
+
+$('dirFilters').innerHTML=GROUPS.map(function(g){
+  var n=g.id==='all'?DIRS.length-1:DIRS.filter(function(d){return d.g===g.id}).length;
+  return '<button type="button" role="tab" data-filter="'+g.id+'" aria-selected="'+(g.id==='all')+'">'+g.n+'<i>'+n+'</i></button>'}).join('');
+
+function dirCard(d){
+  var on=S.dirs.indexOf(d.id)>=0;
+  return '<button type="button" class="opt'+(d.id==='unsure'?' wide':'')+'" role="checkbox" aria-checked="'+on+'" data-dir="'+d.id+'">'+
+    '<span class="optIco">'+ico(d.i)+'</span><span class="optTxt"><b>'+esc(d.n)+'</b><span>'+esc(d.s)+'</span>'+
+    (d.t?'<span class="optTag'+(d.id==='abkhazia'||d.id==='hainan'?' new':'')+'">'+esc(d.t)+'</span>':'')+
+    '</span><span class="tick">'+ico('u-check')+'</span></button>';
+}
+function renderDirs(){
+  var q=dirQuery.trim().toLowerCase(), list=DIRS.filter(function(d){
+    if(d.id==='unsure')return !q||(d.k+' '+d.n).toLowerCase().indexOf(q)>=0;
+    if(dirFilter!=='all'&&d.g!==dirFilter)return false;
+    if(q&&(d.n+' '+d.s+' '+d.k).toLowerCase().indexOf(q)<0)return false;
+    return true;
+  });
+  var html='',lastG='';
+  list.forEach(function(d){
+    if(d.id==='unsure')return;
+    if(dirFilter==='all'&&d.g!==lastG){lastG=d.g;
+      var gn=d.g==='ru'?'Россия · без визы и загранпаспорта':d.g==='sea'?'Море и пляж':'Азия и экзотика';
+      html+='<div class="groupTitle"><b>◆</b>'+gn+'</div>';}
+    html+=dirCard(d);
+  });
+  var u=dirById('unsure');if(!q||list.indexOf(u)>=0)html+=dirCard(u);
+  $('dirGrid').innerHTML=html;
+  $('dirEmpty').hidden=list.length>0;
+  $('dirSearchClear').hidden=!dirQuery;
+}
+function syncDirs(){
+  [].forEach.call($('dirGrid').querySelectorAll('[data-dir]'),function(b){b.setAttribute('aria-checked',String(S.dirs.indexOf(b.dataset.dir)>=0))});
+  var row=$('dirSelected');
+  if(!S.dirs.length){row.hidden=true;row.innerHTML='';return}
+  row.hidden=false;
+  row.innerHTML='<span>Выбрано '+S.dirs.length+' / 3:</span>'+S.dirs.map(function(id){var d=dirById(id);
+    return '<span class="selChip">'+esc(d.n)+'<button type="button" data-unselect="'+id+'" aria-label="Убрать '+esc(d.n)+'">'+ico('u-close')+'</button></span>'}).join('');
+}
+$('cityGrid').innerHTML=CITIES.map(function(c){
+  return '<button type="button" class="opt" role="radio" aria-checked="false" data-city="'+c.id+'">'+
+    '<span class="optIco ui">'+ico(c.i)+'</span><span class="optTxt"><b>'+esc(c.n)+'</b><span>'+esc(c.s)+'</span>'+
+    (c.t?'<span class="optTag'+(c.tn?' new':'')+'">'+esc(c.t)+'</span>':'')+'</span><span class="tick">'+ico('u-check')+'</span></button>'}).join('');
+$('monthGrid').innerHTML=MONTHS.map(function(m){
+  return '<button type="button" class="chip" role="radio" aria-checked="false" data-month="'+m.key+'">'+
+    (m.tag?'<em class="'+m.cls+'">'+m.tag+'</em>':'')+'<b>'+m.n+'</b><span>'+m.y+'</span></button>'}).join('');
+$('nightsPresets').innerHTML=[3,5,7,10,14].map(function(n){return '<button type="button" data-nights="'+n+'">'+n+' '+nightsWord(n)+'</button>'}).join('');
+$('peoplePresets').innerHTML=[['Пара',2,0],['Семья с детьми',2,2],['Компания',4,0],['Я один / одна',1,0],['Три поколения',4,1]]
+  .map(function(p){return '<button type="button" data-people="'+p[1]+','+p[2]+'">'+p[0]+'</button>'}).join('');
+$('typeGrid').innerHTML=TYPES.map(function(t){
+  return '<button type="button" class="opt" role="checkbox" aria-checked="false" data-type="'+t.id+'">'+
+    '<span class="optIco">'+ico(t.i)+'</span><span class="optTxt"><b>'+esc(t.n)+'</b><span>'+esc(t.s)+'</span></span>'+
+    '<span class="tick">'+ico('u-check')+'</span></button>'}).join('');
+$('starSeg').innerHTML=STARS.map(function(s){
+  var lab=s.id==='any'?'?':s.id==='guest'?'⌂':s.n+'<svg aria-hidden="true"><use href="#u-star"/></svg>';
+  return '<button type="button" role="radio" aria-checked="false" data-star="'+s.id+'"><b>'+lab+'</b><span>'+s.s+'</span></button>'}).join('');
+$('mealSeg').innerHTML=MEALS.map(function(m){return '<button type="button" role="radio" aria-checked="false" data-meal="'+m.id+'">'+m.n+'</button>'}).join('');
+$('chanSeg').innerHTML=CHANS.map(function(c){return '<button type="button" role="radio" aria-checked="false" data-chan="'+c.id+'">'+c.n+'</button>'}).join('');
+$('budgetPresets').innerHTML=[100000,200000,350000,500000].map(function(v){return '<button type="button" data-budget="'+v+'">до '+new Intl.NumberFormat('ru-RU').format(v)+' ₽</button>'}).join('');
+$('quickChips').innerHTML=QUICK.map(function(q){return '<button type="button" data-quick="'+esc(q)+'">+ '+esc(q)+'</button>'}).join('');
+function renderAges(){
+  $('agesGrid').innerHTML=Array.apply(null,Array(18)).map(function(_,i){
+    return '<button type="button" role="checkbox" aria-checked="'+(S.ages.indexOf(i)>=0)+'" data-age="'+i+'">'+i+'</button>'}).join('');
+}
+
+/* ============================ СОВЕТ ЭКСПЕРТА ============================ */
+function tip(){
+  var m=monthByKey(S.month), mm=m?m.m:-1, has=function(id){return S.dirs.indexOf(id)>=0};
+  if(S.step===9)return S.delivered?'Заявка у нас. Если вопрос срочный — звоните: <b>+7 932 062-96-16</b>, номер один на двоих.':'Текст заявки уже собран. Отправьте его в <b>MAX</b> — так мы увидим её быстрее всего.';
+  if(S.step===8)return 'Пишем и звоним только по делу: варианты тура, цены и бронь. Никаких рассылок. Срочно — <b>звонок или MAX</b>.';
+  if(S.step===7){if(S.budgetUnknown)return 'Не знать бюджет — нормально. Пришлём три сценария: <b>экономный</b>, оптимальный и «вау», а вы выберете по ощущениям.';
+    return 'Считаем <b>на всех с дорогой</b>. Если бюджет плотный — двигаем даты на 2–3 дня или берём отель на полкатегории ниже: экономия до 25%.'}
+  if(S.step===6){
+    if(has('moscow')||has('spb')||has('kaliningrad'))return 'Для городов России чаще берут <b>3–4★ с завтраками</b> в центре: вы всё равно весь день на ногах, а доплата за «всё включено» тут не нужна.';
+    if(S.types.indexOf('party')>=0)return 'Тусовочные отели и «всё включено» — лучшая связка: напитки уже в цене, а бары за территорией бьют по кошельку.';
+    return 'Звёзды в Турции и Египте честнее, чем в России: <b>5★</b> там — это пляж, питание и анимация. В городах Европы и РФ ориентируйтесь на район и отзывы.'}
+  if(S.step===5){
+    if(S.types.indexOf('party')>=0&&S.types.indexOf('family')>=0)return 'Тусовка + дети — сочетание рабочее, но ищем отели с <b>разделёнными зонами</b>: детская анимация до 22:00, взрослая — отдельно.';
+    if(S.types.indexOf('city')>=0)return 'Городской отель: смотрим не на звёзды, а на <b>пешую доступность центра</b> и тишину окон. Подскажем конкретные адреса.';
+    if(S.types.indexOf('beach')>=0)return '«Первая линия» у всех разная: где-то 30 метров, где-то через дорогу и ж/д. Мы проверяем <b>реальный путь до пляжа</b> по карте.';
+    return 'Формат отеля важнее звёзд: тихая «четвёрка» у моря часто даёт больше отдыха, чем шумная «пятёрка».'}
+  if(S.step===4){if(S.kids>0)return 'Укажите возраст <b>на дату возвращения</b>: если ребёнку исполняется 2 или 12 лет в поездке, тариф меняется. Это реальная экономия.';
+    return 'Если едете компанией от 4 человек — считаем и <b>групповой тариф</b> у оператора, и два соседних номера: иногда второй вариант дешевле.'}
+  if(S.step===3){
+    if(has('krasnodar')&&(mm===6||mm===7))return 'Июль–август в Сочи — пик цен. <b>Сентябрь</b>: то же тёплое море, свободные пляжи и минус 20–30% к стоимости.';
+    if(has('spb')&&(mm===5||mm===6))return 'Белые ночи — с конца мая по начало июля. Отели в центре на эти даты разбирают за <b>2–3 месяца</b>, лучше бронировать сейчас.';
+    if(has('kavkaz')&&(mm===11||mm===0||mm===1))return 'Зимой Кавказ двойной: <b>Домбай и Архыз</b> — катание, <b>Кисловодск</b> — санатории, нарзан и прогулки без снега.';
+    if(mm===11||mm===0)return 'Новогодние заезды дорожают ближе к дате. Раннее бронирование на Новый год даёт <b>до 30%</b> и лучший выбор номеров.';
+    return 'Гибкие даты ±3 дня почти всегда находят вылет дешевле. Мы покажем разницу в рублях, а не на словах.'}
+  if(S.step===2){
+    if(S.city==='nn')return 'Верно: из <b>Стригино</b> чартерная сетка шире. Сравним с Чебоксарами и Казанью и честно скажем, где итог дешевле с учётом дороги.';
+    if(S.city==='ground')return 'По России без перелёта — отличная идея: <b>поезд</b> до Москвы и Питера, свой автомобиль — в Сочи и на Кавказ. Подберём отель без авиаблока.';
+    return 'Мы всегда проверяем <b>2–3 города вылета</b>: перелёт — половина стоимости тура, и разница бывает в десятки тысяч.'}
+  if(has('turkey')&&(mm===11||mm===0||mm===1))return 'Турция зимой — это <b>SPA-отели с подогреваемым бассейном</b>, а не пляж. За морем в январе лучше в Египет, ОАЭ или Таиланд.';
+  if(has('kavkaz'))return 'Кавказ — это три разных отпуска: <b>санатории</b> Кисловодска, <b>горы</b> Домбая и Архыза и <b>впечатления</b> Дагестана. Скажите, что ближе.';
+  if(has('moscow')||has('spb'))return 'Города России дешевле в будни: заезд <b>с воскресенья по четверг</b> экономит до 25% против пятницы–субботы.';
+  if(has('krasnodar'))return 'Краснодарский край — это не только Сочи: <b>Анапа</b> дешевле и лучше для малышей, <b>Геленджик</b> — для прогулок, <b>Сочи</b> — для гор и движухи.';
+  if(S.dirs.length>1)return 'Отличный набор для сравнения. Посчитаем все выбранные направления на одни даты — увидите <b>цену за одинаковый уровень</b>.';
+  return 'Россия — без визы, загранпаспорта и валютных сюрпризов. Отметьте до трёх направлений: покажем, где ваши деньги дадут больше отдыха.';
+}
+function levelNote(){
+  var cityOnly=S.dirs.length&&S.dirs.every(function(id){var d=dirById(id);return d&&(id==='moscow'||id==='spb'||id==='kaliningrad')});
+  if(cityOnly)return 'Для Москвы, Питера и Калининграда обычно берут <b>3–4★ с завтраками</b> в центре — это оптимум по цене и впечатлениям.';
+  if(S.stars==='5')return 'Пятёрки разные: <b>premium</b> и «условные 5★» отличаются в разы. Пришлём только те, где сами уверены, с отзывами.';
+  if(S.stars==='3')return 'Хорошая «тройка» у моря часто выигрывает у плохой «четвёрки». Смотрим на <b>свежие отзывы и пляж</b>, а не на цифру.';
+  if(S.stars==='guest')return 'Гостевые дома и базы — сильный вариант по России: <b>Сочи, Кавказ, Алтай, Карелия</b>. Проверяем отопление, питание и дорогу.';
+  return 'Если сомневаетесь — оставьте «Подскажете»: пришлём варианты в двух уровнях, и разница будет видна сразу.';
+}
+
+/* ============================ ОБНОВЛЕНИЕ ИНТЕРФЕЙСА ============================ */
+function setField(id,val,emptyId,isEmpty){
+  var el=$(id);if(!el)return;
+  if(el.textContent!==val){el.textContent=val;var p=el.parentNode;p.classList.remove('flash');void p.offsetWidth;p.classList.add('flash');}
+  if(emptyId)$(emptyId).classList.toggle('empty',!!isEmpty);
+}
+function completeness(){
+  var checks=[S.dirs.length>0,!!S.city&&!(S.city==='other'&&!S.cityOther.trim()),!!S.month||!!S.exact,S.types.length>0,!!S.stars,
+    S.budgetUnknown||S.budget>0,S.name.trim().length>1,S.phone.length===11,S.consent];
+  var n=checks.filter(Boolean).length;return Math.round(n/checks.length*100);
+}
+function updatePass(){
+  var to=S.dirs.length?dirById(S.dirs[0]).c:'···';
+  setField('passFrom',cityCode());setField('passFromName',cityName());
+  setField('passTo',to);setField('passToName',S.dirs.length?dirsLabel():'выберите направление');
+  $('passToName').title=dirsLabel();
+  setField('passDate',dateShort(),'pfDate',dateShort()==='— —');
+  setField('passNights',S.nights+' '+nightsWord(S.nights));
+  setField('passPax',paxShort());$('pfPax').title=paxLabel();
+  setField('passHotel',typesLabel()||'— —','pfHotel',!S.types.length);$('pfHotel').title=typesLabel();
+  setField('passClass',starsLabel());setField('passMeal',mealLabel());
+  setField('passBudget',S.budgetUnknown?'по запросу':rub(S.budget));
+  var id=ticketId();
+  if($('passTicket').textContent!==id){$('passTicket').textContent=id;$('passBarcode').innerHTML=barcodeSVG(id)}
+  var pct=completeness();$('passPct').textContent=pct+'%';$('passPctBar').style.width=pct+'%';
+  var st=$('passStatus');
+  st.className='passStatus'+(S.sent?(S.delivered?' ok':' warn'):'');
+  st.textContent=S.sent?(S.delivered?'Отправлено':'К отправке'):'Черновик';
+  var stamp=$('passStamp');
+  if(S.sent){var d=new Date();$('stampDate').textContent=('0'+d.getDate()).slice(-2)+'.'+('0'+(d.getMonth()+1)).slice(-2)+'.'+d.getFullYear();
+    if(!stamp.classList.contains('on'))stamp.classList.add('on');}
+  else stamp.classList.remove('on');
+}
+function updateRail(){
+  railDots.forEach(function(d,i){
+    var n=i+1,done=n<S.step||S.step===9;
+    d.classList.toggle('done',done);d.classList.toggle('cur',n===S.step);
+    d.disabled=n>S.maxStep&&S.step!==9;
+    d.querySelector('i').innerHTML=done?'<svg aria-hidden="true"><use href="#u-check"/></svg>':String(n);
+    if(n===S.step)d.setAttribute('aria-current','step');else d.removeAttribute('aria-current');
+  });
+  $('railPlane').style.left=(S.step===9?97:((Math.min(S.step,8)-.5)/8*100))+'%';
+  var act=railDots[Math.min(S.step,8)-1];
+  if(act&&window.innerWidth<760){var sc=$('railScroll');sc.scrollTo({left:act.offsetLeft-sc.clientWidth/2+act.offsetWidth/2,behavior:reduce?'auto':'smooth'})}
+  $('topProg').style.width=(S.step===9?100:((S.step-1)/8*100))+'%';
+}
+function updateFoot(){
+  var last=S.step===8;
+  $('backBtn').disabled=S.step===1;
+  $('cardFoot').style.display=S.step===9?'none':'flex';
+  var label=sending?'Отправляем…':last?'Отправить заявку':'Далее';
+  [$('nextBtn'),$('mNext')].forEach(function(b){
+    b.querySelector('span').textContent=label;
+    b.disabled=sending;
+    b.classList.toggle('ready',!sending&&valid(S.step).ok);
+    var u=b.querySelector('svg use');if(u)u.setAttribute('href',sending?'#u-clock':last?'#u-plane-f':'#u-ar');
+    if(sending&&!b.querySelector('.spin')){var s=document.createElement('span');s.className='spin';b.appendChild(s)}
+    if(!sending){var sp=b.querySelector('.spin');if(sp)sp.remove()}
+  });
+  $('mobileBar').style.display=S.step===9?'none':'';
+  var hints={1:S.dirs.length?'Выбрано '+S.dirs.length+' из 3':'Можно выбрать до трёх',2:'Город: '+cityName(),
+    3:whenLabel(),4:paxLabel(),5:typesLabel()||'Выберите формат отеля',6:starsLabel()+' · '+mealLabel(),
+    7:budgetLabel(),8:'Ответим в ближайшее время'};
+  $('footHint').textContent=hints[S.step]||'';
+  $('mRoute').textContent=cityCode()+' → '+(S.dirs.length?dirById(S.dirs[0]).c:'···');
+  $('mStep').textContent='Шаг '+Math.min(S.step,8)+' из 8 · '+S.nights+' '+nightsWord(S.nights)+' · талон';
+}
+function sync(){
+  var acc=ACC[S.step]||ACC[1];
+  root.style.setProperty('--accent',acc);root.style.setProperty('--a12',acc+'1f');
+  root.style.setProperty('--a30',acc+'4d');root.style.setProperty('--a60',acc+'99');
+  [].forEach.call($('stepsWrap').children,function(el){el.classList.toggle('is-active',+el.dataset.step===S.step)});
+  syncDirs();
+  [].forEach.call($('cityGrid').querySelectorAll('[data-city]'),function(b){b.setAttribute('aria-checked',String(b.dataset.city===S.city))});
+  $('cityOtherWrap').hidden=S.city!=='other';
+  [].forEach.call($('monthGrid').querySelectorAll('[data-month]'),function(b){b.setAttribute('aria-checked',String(b.dataset.month===S.month))});
+  $('nightsVal').innerHTML=S.nights+'<i>'+nightsWord(S.nights)+'</i>';
+  $('nightsHint').textContent=S.nights<=4?'короткий уик-энд':S.nights<=8?'оптимально для моря':S.nights<=14?'полноценный отпуск':'длинная перезагрузка';
+  $('nightsRange').value=S.nights;$('nightsRange').style.setProperty('--p',((S.nights-2)/19*100)+'%');
+  $('flexToggle').setAttribute('aria-checked',String(S.flex));
+  $('adultsVal').textContent=S.adults;$('adultsWord').textContent=adultsWord(S.adults);
+  $('kidsVal').textContent=S.kids;$('kidsWord').textContent=kidsWord(S.kids);
+  $('agesWrap').hidden=S.kids===0;
+  [].forEach.call($('agesGrid').querySelectorAll('[data-age]'),function(b){b.setAttribute('aria-checked',String(S.ages.indexOf(+b.dataset.age)>=0))});
+  [].forEach.call($('typeGrid').querySelectorAll('[data-type]'),function(b){b.setAttribute('aria-checked',String(S.types.indexOf(b.dataset.type)>=0))});
+  [].forEach.call($('starSeg').querySelectorAll('[data-star]'),function(b){b.setAttribute('aria-checked',String(b.dataset.star===S.stars))});
+  [].forEach.call($('mealSeg').querySelectorAll('[data-meal]'),function(b){b.setAttribute('aria-checked',String(b.dataset.meal===S.meal))});
+  [].forEach.call($('chanSeg').querySelectorAll('[data-chan]'),function(b){b.setAttribute('aria-checked',String(b.dataset.chan===S.channel))});
+  $('levelNote').querySelector('span').innerHTML=levelNote();
+  $('budgetVal').textContent=S.budgetUnknown?'По запросу':rub(S.budget);
+  var ppl=S.adults+S.kids;
+  $('budgetPer').textContent=S.budgetUnknown?'пришлём 3 сценария':'≈ '+rub(S.budget/ppl)+' на человека · '+ppl+' '+plural(ppl,'человек','человека','человек');
+  $('budgetRange').value=S.budget;$('budgetRange').disabled=S.budgetUnknown;
+  $('budgetRange').style.setProperty('--p',((S.budget-40000)/760000*100)+'%');
+  $('budgetUnknown').setAttribute('aria-checked',String(S.budgetUnknown));
+  $('consentWrap').classList.toggle('bad',false);
+  $('expertTip').innerHTML=tip();
+  updatePass();updateRail();updateFoot();save();
+}
+
+/* ============================ НАВИГАЦИЯ ============================ */
+function valid(n){
+  if(n===1&&!S.dirs.length)return{ok:false,msg:'Выберите хотя бы одно направление — или отметьте «Не определился».'};
+  if(n===2){if(!S.city)return{ok:false,msg:'Укажите город вылета.'};
+    if(S.city==='other'&&S.cityOther.trim().length<2)return{ok:false,msg:'Напишите город вылета — хотя бы две буквы.',focus:$('cityOther')};}
+  if(n===3&&!S.month&&!S.exact)return{ok:false,msg:'Выберите месяц поездки или укажите точную дату.'};
+  if(n===5&&!S.types.length)return{ok:false,msg:'Отметьте формат отеля — хотя бы один из восьми.'};
+  if(n===8){
+    if(S.name.trim().length<2)return{ok:false,msg:'Как к вам обращаться? Напишите имя.',focus:$('fName'),bad:'fName'};
+    if(S.phone.length!==11)return{ok:false,msg:'Проверьте телефон: нужно 11 цифр, например +7 932 062-96-16.',focus:$('fPhone'),bad:'fPhone'};
+    if(!S.consent)return{ok:false,msg:'Нужно согласие на обработку данных — без него мы не можем вам написать.',consent:true};
+  }
+  return{ok:true};
+}
+function showErr(n,v){
+  var box=document.querySelector('[data-err="'+n+'"]');
+  if(box){box.hidden=v.ok;box.querySelector('span').textContent=v.ok?'':v.msg}
+  [].forEach.call(document.querySelectorAll('.field.bad'),function(f){f.classList.remove('bad')});
+  if(!v.ok){
+    if(v.bad)$(v.bad).parentNode.classList.add('bad');
+    if(v.consent)$('consentWrap').classList.add('bad');
+    $('card').classList.remove('shake');void $('card').offsetWidth;$('card').classList.add('shake');
+    $('live').textContent=v.msg;
+    if(v.focus)v.focus();
+  }
+}
+function go(n,skipValidate){
+  n=Math.max(1,Math.min(9,n));
+  if(n>S.step&&!skipValidate){var v=valid(S.step);if(!v.ok){showErr(S.step,v);return}}
+  var box=document.querySelector('[data-err="'+S.step+'"]');if(box)box.hidden=true;
+  S.step=n;if(n<=8)S.maxStep=Math.max(S.maxStep,n);
+  if(n===9)renderResult();
+  sync();
+  $('live').textContent=n===9?'Заявка собрана':'Шаг '+n+' из 8';
+  var card=$('card'),top=card.getBoundingClientRect().top+window.pageYOffset-(parseInt(getComputedStyle(root).getPropertyValue('--hh'))||70)-16;
+  if(window.pageYOffset>top+40||window.innerWidth<1080)window.scrollTo({top:Math.max(0,top),behavior:reduce?'auto':'smooth'});
+}
+function next(){if(sending)return;if(S.step===8){var v=valid(8);if(!v.ok){showErr(8,v);return}submit()}else go(S.step+1)}
+function back(){if(S.step>1)go(S.step-1,true)}
+$('nextBtn').addEventListener('click',next);
+$('mNext').addEventListener('click',next);
+$('backBtn').addEventListener('click',back);
+$('mSummary').addEventListener('click',openSheet);
+
+/* ============================ ОБРАБОТЧИКИ ============================ */
+$('card').addEventListener('click',function(e){
+  var t=e.target.closest('button');if(!t)return;
+  var d=t.dataset;
+  if(d.goto){go(+d.goto,true);return}
+  if(d.filter){dirFilter=d.filter;[].forEach.call($('dirFilters').children,function(b){b.setAttribute('aria-selected',String(b.dataset.filter===dirFilter))});renderDirs();syncDirs();return}
+  if(d.dir){toggleDir(d.dir);return}
+  if(d.unselect){S.dirs=S.dirs.filter(function(x){return x!==d.unselect});syncDirs();sync();return}
+  if(d.city){
+    S.city=d.city;sync();
+    clearTimeout(autoTimer);
+    if(d.city!=='other'){autoTimer=setTimeout(function(){if(S.step===2&&S.city===d.city)go(3)},420)}
+    else setTimeout(function(){$('cityOther').focus()},60);
+    return;
+  }
+  if(d.month){S.month=d.month;S.exact='';$('exactDate').value='';sync();return}
+  if(d.nights){S.nights=+d.nights;sync();return}
+  if(d.people){var p=d.people.split(',');S.adults=+p[0];S.kids=+p[1];S.ages=S.ages.slice(0,S.kids);renderAges();sync();return}
+  if(d.age!==undefined){
+    var a=+d.age,i=S.ages.indexOf(a);
+    if(i>=0)S.ages.splice(i,1);
+    else{if(S.ages.length>=S.kids){toast('Отметьте не больше '+S.kids+' '+kidsWord(S.kids)+' — столько детей едет','warn');return}S.ages.push(a)}
+    sync();return;
+  }
+  if(d.type){
+    var j=S.types.indexOf(d.type);
+    if(j>=0)S.types.splice(j,1);
+    else{if(S.types.length>=2){toast('Можно выбрать до двух форматов отеля','warn');return}S.types.push(d.type)}
+    sync();return;
+  }
+  if(d.star){S.stars=d.star;sync();return}
+  if(d.meal){S.meal=d.meal;sync();return}
+  if(d.chan){S.channel=d.chan;sync();return}
+  if(d.budget){S.budget=+d.budget;S.budgetUnknown=false;sync();return}
+  if(d.quick){
+    var cur=$('fComment').value.trim();
+    if(cur.toLowerCase().indexOf(d.quick.toLowerCase())>=0){toast('Это пожелание уже добавлено','warn');return}
+    S.comment=(cur?cur.replace(/[.;\s]+$/,'')+'; ':'')+d.quick;
+    $('fComment').value=S.comment;sync();toast('Добавили в пожелания','ok');return;
+  }
+  if(d.act){
+    if(d.act==='adults+')S.adults=Math.min(9,S.adults+1);
+    if(d.act==='adults-')S.adults=Math.max(1,S.adults-1);
+    if(d.act==='kids+')S.kids=Math.min(6,S.kids+1);
+    if(d.act==='kids-'){S.kids=Math.max(0,S.kids-1);S.ages=S.ages.slice(0,S.kids)}
+    renderAges();sync();return;
+  }
+  if(d.send){sendVia(d.send);return}
+  if(t.id==='flexToggle'){S.flex=!S.flex;sync();return}
+  if(t.id==='budgetUnknown'){S.budgetUnknown=!S.budgetUnknown;sync();return}
+  if(t.id==='dirSearchClear'){dirQuery='';$('dirSearch').value='';renderDirs();syncDirs();$('dirSearch').focus();return}
+  if(t.id==='dirEmptyReset'){dirQuery='';dirFilter='all';$('dirSearch').value='';
+    [].forEach.call($('dirFilters').children,function(b){b.setAttribute('aria-selected',String(b.dataset.filter==='all'))});renderDirs();syncDirs();return}
+  if(t.id==='consentOpen'){openConsent();return}
+});
+function toggleDir(id){
+  if(id==='unsure'){S.dirs=S.dirs.indexOf('unsure')>=0?[]:['unsure']}
+  else{
+    S.dirs=S.dirs.filter(function(x){return x!=='unsure'});
+    var i=S.dirs.indexOf(id);
+    if(i>=0)S.dirs.splice(i,1);
+    else{if(S.dirs.length>=3){toast('Максимум три направления — уберите одно, чтобы добавить новое','warn');return}S.dirs.push(id)}
+  }
+  syncDirs();sync();
+}
+$('dirSearch').addEventListener('input',function(){dirQuery=this.value;renderDirs();syncDirs()});
+$('cityOther').addEventListener('input',function(){S.cityOther=this.value;sync()});
+$('exactDate').addEventListener('change',function(){
+  S.exact=this.value;
+  if(S.exact){var d=new Date(S.exact+'T00:00:00');if(!isNaN(d))S.month=d.getFullYear()+'-'+d.getMonth()}
+  sync();
+});
+(function(){var d=new Date(),iso=d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2);$('exactDate').min=iso})();
+$('nightsRange').addEventListener('input',function(){S.nights=+this.value;sync()});
+$('budgetRange').addEventListener('input',function(){S.budget=+this.value;S.budgetUnknown=false;sync()});
+$('fName').addEventListener('input',function(){S.name=this.value;sync()});
+$('fComment').addEventListener('input',function(){S.comment=this.value;save()});
+$('fPhone').addEventListener('input',function(){
+  var v=maskPhone(this.value);this.value=v;S.phone=v.replace(/\D/g,'');
+  var p=v.length;try{this.setSelectionRange(p,p)}catch(e){}
+  sync();
+});
+$('fPhone').addEventListener('focus',function(){if(!this.value){this.value='+7 (';S.phone='7'}});
+$('fConsent').addEventListener('change',function(){S.consent=this.checked;$('consentWrap').classList.remove('bad');sync()});
+$('card').addEventListener('keydown',function(e){
+  if(e.key!=='Enter')return;
+  var tag=(e.target.tagName||'').toLowerCase();
+  if(tag==='textarea'||tag==='button'||tag==='a')return;
+  if($('modal').classList.contains('on'))return;
+  e.preventDefault();next();
+});
+document.addEventListener('click',function(e){
+  var a=e.target.closest('[data-scroll]');
+  if(a){e.preventDefault();window.scrollTo({top:0,behavior:reduce?'auto':'smooth'})}
+  var s=e.target.closest('[data-send]');
+  if(s&&!$('card').contains(s)){sendVia(s.dataset.send)}
+});
+window.addEventListener('scroll',function(){$('topbar').classList.toggle('scrolled',window.pageYOffset>12)},{passive:true});
+
+/* ============================ ТЕКСТ ЗАЯВКИ ============================ */
+function requestText(){
+  var L=[];
+  L.push('ЗАЯВКА НА ПОДБОР ТУРА · '+CONFIG.site);
+  L.push('Талон: '+ticketId());
+  L.push('———————————————');
+  L.push('Направления: '+(dirsLabel()||'—'));
+  L.push('Вылет: '+cityName()+(S.city!=='other'&&S.city!=='ground'?' ('+cityCode()+')':''));
+  L.push('Когда: '+whenLabel());
+  L.push('Кто едет: '+paxLabel());
+  L.push('Формат отеля: '+(typesLabel()||'—'));
+  L.push('Уровень: '+starsLabel()+' · Питание: '+mealLabel());
+  L.push('Бюджет: '+budgetLabel()+(S.budgetUnknown?'':' (на всех, ≈ '+rub(S.budget/(S.adults+S.kids))+' на человека)'));
+  L.push('———————————————');
+  L.push('Имя: '+(S.name.trim()||'—'));
+  L.push('Телефон: '+(S.phone?fmtPhone(S.phone):'—'));
+  L.push('Удобный канал: '+chanLabel());
+  L.push('Пожелания: '+(S.comment.trim()||'—'));
+  L.push('Согласие на обработку ПД: '+(S.consent?'да':'нет'));
+  return L.join('\n');
+}
+function copyText(silent){
+  var text=requestText();
+  function ok(){if(!silent)toast('Текст заявки скопирован в буфер обмена','ok');return true}
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    return navigator.clipboard.writeText(text).then(ok).catch(function(){return fallback()});
+  }
+  return Promise.resolve(fallback());
+  function fallback(){
+    try{
+      var ta=document.createElement('textarea');ta.value=text;ta.setAttribute('readonly','');
+      ta.style.cssText='position:fixed;top:0;left:0;opacity:0';document.body.appendChild(ta);
+      ta.select();ta.setSelectionRange(0,text.length);var done=document.execCommand('copy');ta.remove();
+      if(done)return ok();
+    }catch(e){}
+    openModal('Скопируйте заявку вручную','<p>Браузер не дал доступ к буферу обмена. Выделите текст и скопируйте его:</p><textarea readonly id="manualCopy">'+esc(text)+'</textarea>');
+    setTimeout(function(){var t=$('manualCopy');if(t){t.focus();t.select()}},80);
+    return false;
+  }
+}
+function sendVia(ch){
+  var text=requestText(), enc=encodeURIComponent(text);
+  if(ch==='wa'){window.open('https://wa.me/'+CONFIG.phoneDigits+'?text='+enc,'_blank','noopener');toast('Открыли WhatsApp с готовым текстом — нажмите «Отправить»','ok');return}
+  if(ch==='mail'){window.location.href='mailto:'+CONFIG.email+'?subject='+encodeURIComponent('Заявка на подбор тура '+ticketId())+'&body='+enc;toast('Открыли почтовую программу с готовым письмом','ok');return}
+  if(ch==='call'){window.location.href='tel:'+CONFIG.phone;return}
+  copyText(true).then(function(copied){
+    if(ch==='max'){
+      window.open(CONFIG.maxUrl,'_blank','noopener');
+      toast(copied?'Текст заявки скопирован. В MAX откройте чат с '+CONFIG.phoneHuman+' и вставьте его.':'Скопируйте текст заявки ниже и отправьте в MAX на '+CONFIG.phoneHuman,'ok',
+        {label:'Показать текст',fn:function(){openModal('Текст заявки','<textarea readonly id="manualCopy">'+esc(text)+'</textarea>')}});
+    }else{
+      window.open('https://t.me/+'+CONFIG.phoneDigits,'_blank','noopener');
+      toast(copied?'Текст скопирован — вставьте его в чат Telegram':'Открыли Telegram. Текст заявки — в блоке ниже','ok');
+    }
+  });
+}
+function downloadText(){
+  try{
+    var blob=new Blob([requestText()],{type:'text/plain;charset=utf-8'});
+    var url=URL.createObjectURL(blob),a=document.createElement('a');
+    a.href=url;a.download='Маршрут-21-заявка-'+ticketId()+'.txt';document.body.appendChild(a);a.click();a.remove();
+    setTimeout(function(){URL.revokeObjectURL(url)},1500);toast('Файл заявки сохранён','ok');
+  }catch(e){toast('Браузер не дал сохранить файл — скопируйте текст','warn')}
+}
+function shareText(){
+  if(navigator.share){navigator.share({title:'Заявка на подбор тура · Маршрут построен 21',text:requestText()}).catch(function(){})}
+  else copyText();
+}
+
+/* ============================ ОТПРАВКА ============================ */
+function submit(){
+  if(sending)return;sending=true;updateFoot();
+  var payload={
+    'Талон':ticketId(),'Направления':dirsLabel()||'—','Вылет':cityName(),'Когда':whenLabel(),
+    'Гости':paxLabel(),'Формат отеля':typesLabel()||'—','Уровень':starsLabel(),'Питание':mealLabel(),
+    'Бюджет':budgetLabel(),'Имя':S.name.trim(),'Телефон':fmtPhone(S.phone),'Канал связи':chanLabel(),
+    'Пожелания':S.comment.trim()||'—','Источник':CONFIG.site+' · квиз подбора тура',
+    _subject:'Новая заявка на подбор тура · '+ticketId()+' · '+(dirsLabel()||'без направления'),
+    _template:'table',_captcha:'false',_honey:''
+  };
+  var ctrl=('AbortController' in window)?new AbortController():null;
+  var timer=setTimeout(function(){if(ctrl)ctrl.abort()},9000);
+  var req=window.fetch?fetch(CONFIG.formUrl,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify(payload),signal:ctrl?ctrl.signal:undefined}).then(function(r){return r.json().catch(function(){return{}})}):Promise.reject(new Error('no fetch'));
+  req.then(function(data){
+    clearTimeout(timer);
+    var ok=data&&(data.success===true||data.success==='true');
+    finish(ok);
+  }).catch(function(){clearTimeout(timer);finish(false)});
+}
+function finish(ok){
+  sending=false;S.sent=true;S.delivered=!!ok;S.maxStep=8;
+  go(9,true);celebrate();
+  toast(ok?'Заявка ушла на почту агентства':'Заявка собрана — отправьте её в один клик',ok?'ok':'warn');
+}
+function renderResult(){
+  var ok=S.delivered;
+  var head='<div class="resHead"><span class="resBadge'+(ok?'':' warn')+'">'+ico(ok?'u-check':'u-ticket')+'</span><div>'+
+    '<h2 id="t9">'+(ok?'Заявка отправлена. Маршрут строим!':'Заявка собрана — остался один клик')+'</h2>'+
+    '<p>'+(ok
+      ? esc(S.name.trim()||'Спасибо')+', ваша заявка '+ticketId()+' уже на почте у Лидии и Ольги. Ответим в ближайшее время и пришлём 3–5 вариантов с ценами. Хотите быстрее — напишите нам в MAX, текст заявки уже готов.'
+      : 'Мы собрали всё в готовый текст и талон. Автоотправка сейчас недоступна, поэтому просто выберите канал ниже — сообщение уже заполнено, вам останется нажать «Отправить».')+
+    '</p></div></div>';
+  var sends='<div class="sendGrid">'+
+    '<button class="send max" type="button" data-send="max"><span class="si">'+ico('u-chat')+'</span><span><b>MAX</b><span>быстрее всего · скопируем текст</span></span></button>'+
+    '<a class="send wa" href="https://wa.me/'+CONFIG.phoneDigits+'?text='+encodeURIComponent(requestText())+'" target="_blank" rel="noopener"><span class="si">'+ico('u-chat')+'</span><span><b>WhatsApp</b><span>текст подставим сами</span></span></a>'+
+    '<button class="send tg" type="button" data-send="tg"><span class="si">'+ico('u-plane')+'</span><span><b>Telegram</b><span>откроем чат по номеру</span></span></button>'+
+    '<a class="send mail" href="mailto:'+CONFIG.email+'?subject='+encodeURIComponent('Заявка на подбор тура '+ticketId())+'&body='+encodeURIComponent(requestText())+'"><span class="si">'+ico('u-mail')+'</span><span><b>Почта</b><span>письмо уже готово</span></span></a>'+
+    '<a class="send call" href="tel:'+CONFIG.phone+'"><span class="si">'+ico('u-phone')+'</span><span><b>Позвонить</b><span>'+CONFIG.phoneHuman+'</span></span></a>'+
+    '</div>';
+  var tools='<div class="resTools">'+
+    '<button type="button" id="resCopy">'+ico('u-copy')+'Скопировать заявку</button>'+
+    '<button type="button" id="resDl">'+ico('u-dl')+'Скачать .txt</button>'+
+    '<button type="button" id="resShare">'+ico('u-share')+'Поделиться</button>'+
+    '<button type="button" id="resEdit">'+ico('u-edit')+'Изменить ответы</button>'+
+    '<button type="button" id="resReset">'+ico('u-refresh')+'Новая подборка</button>'+
+    '</div>';
+  var steps='<ul class="next3">'+
+    '<li><u>01 · СЕЙЧАС</u><b>Читаем заявку</b><span>Проверяем наличие мест, стыковки и реальные отзывы по отелям.</span></li>'+
+    '<li><u>02 · В БЛИЖАЙШЕЕ ВРЕМЯ</u><b>Присылаем 3–5 вариантов</b><span>С ценами, фото и честными минусами каждого отеля.</span></li>'+
+    '<li><u>03 · ПОСЛЕ ВЫБОРА</u><b>Бронируем и ведём</b><span>Договор, документы, напоминания и связь с нами всю поездку.</span></li>'+
+    '</ul>';
+  var req='<div class="reqBox"><div class="rh"><span>Текст заявки · '+ticketId()+'</span><span>'+CONFIG.phoneHuman+'</span></div><pre id="reqPre">'+esc(requestText())+'</pre></div>';
+  $('resultBox').innerHTML=head+sends+tools+steps+req;
+  $('resCopy').addEventListener('click',function(){copyText()});
+  $('resDl').addEventListener('click',downloadText);
+  $('resShare').addEventListener('click',shareText);
+  $('resEdit').addEventListener('click',function(){S.sent=false;S.delivered=false;go(8,true)});
+  $('resReset').addEventListener('click',function(){resetAll()});
+}
+
+/* ============================ СБРОС / ЧЕРНОВИК ============================ */
+function resetAll(){
+  undoBackup=JSON.parse(JSON.stringify(S));
+  S=JSON.parse(JSON.stringify(DEF));
+  dirFilter='all';dirQuery='';$('dirSearch').value='';
+  [].forEach.call($('dirFilters').children,function(b){b.setAttribute('aria-selected',String(b.dataset.filter==='all'))});
+  $('cityOther').value='';$('exactDate').value='';$('fName').value='';$('fPhone').value='';$('fComment').value='';$('fConsent').checked=false;
+  $('resumeBar').hidden=true;
+  renderDirs();renderAges();go(1,true);
+  toast('Ответы очищены','warn',{label:'Вернуть',fn:function(){
+    if(!undoBackup)return;S=undoBackup;undoBackup=null;
+    $('cityOther').value=S.cityOther;$('exactDate').value=S.exact;$('fName').value=S.name;
+    $('fPhone').value=fmtPhone(S.phone);$('fComment').value=S.comment;$('fConsent').checked=S.consent;
+    renderDirs();renderAges();go(Math.min(S.step,8),true);toast('Черновик возвращён','ok');
+  }});
+}
+$('resetBtn').addEventListener('click',function(){resetAll()});
+$('resumeReset').addEventListener('click',function(){resetAll()});
+$('resumeGo').addEventListener('click',function(){$('resumeBar').hidden=true;go(savedStep,true)});
+
+/* ============================ СОГЛАСИЕ ============================ */
+function openConsent(){
+  openModal('Согласие на обработку персональных данных',
+  '<p>Я даю согласие <b>ИП Емельянова Л. С.</b> (ИНН 526021307960, реестровый номер турагента РТА 0044374, адрес: г. Чебоксары, ул. Фридриха Энгельса, 11к1, офис 3) на обработку моих персональных данных в соответствии с Федеральным законом № 152-ФЗ «О персональных данных».</p>'+
+  '<p><b>Какие данные:</b> имя, номер телефона, выбранные параметры поездки и пожелания, указанные в форме.</p>'+
+  '<p><b>Зачем:</b> подобрать тур, связаться со мной по указанным контактам, направить варианты отдыха и ответить на вопросы. Данные не передаются третьим лицам, кроме туроператоров, необходимых для бронирования, и не используются для рекламных рассылок.</p>'+
+  '<p><b>Срок и отзыв:</b> согласие действует до его отзыва. Отозвать можно письмом на <b>'+CONFIG.email+'</b> — данные удалим в течение 3 рабочих дней.</p>'+
+  '<p><b>Как хранится:</b> черновик подборки сохраняется только в вашем браузере (localStorage) и очищается кнопкой «Начать заново».</p>');
+}
+
+/* ============================ САЛЮТ ============================ */
+function celebrate(){
+  if(reduce)return;
+  var c=document.createElement('canvas');c.className='fx';root.appendChild(c);
+  var ctx=c.getContext('2d'),dpr=Math.min(window.devicePixelRatio||1,2);
+  c.width=window.innerWidth*dpr;c.height=window.innerHeight*dpr;
+  c.style.width=window.innerWidth+'px';c.style.height=window.innerHeight+'px';
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  var cols=['#FFB020','#FF6A45','#FF4D9D','#2FD4C4','#4DA3FF','#B6E82A'],P=[];
+  for(var i=0;i<96;i++)P.push({x:window.innerWidth*(.18+Math.random()*.64),y:window.innerHeight*.44+Math.random()*40,
+    vx:(Math.random()-.5)*8,vy:-7-Math.random()*10,w:5+Math.random()*8,h:9+Math.random()*10,
+    a:Math.random()*6.28,va:(Math.random()-.5)*.32,c:cols[i%6],life:0});
+  var start=performance.now(),prev=start,raf=0;
+  function frame(t){
+    var dt=Math.min((t-prev)/16.7,3);prev=t;
+    ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+    var alive=0;
+    for(var i=0;i<P.length;i++){var p=P[i];
+      p.vy+=.3*dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.a+=p.va*dt;p.vx*=.995;p.life+=dt;
+      if(p.y<window.innerHeight+70){alive++;
+        ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.a);ctx.globalAlpha=Math.max(0,1-p.life/160);
+        ctx.fillStyle=p.c;ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);ctx.restore();}
+    }
+    if(alive&&t-start<4200)raf=requestAnimationFrame(frame);
+    else{cancelAnimationFrame(raf);c.remove()}
+  }
+  raf=requestAnimationFrame(frame);
+}
+
+/* ============================ ПЕРЕНОС ТАЛОНА ============================ */
+var mq=window.matchMedia('(max-width:1080px)');
+function place(){
+  var col=$('passCol');
+  if(mq.matches){if(col.parentNode!==$('sheetBody'))$('sheetBody').appendChild(col)}
+  else{if(col.parentNode!==$('asideSlot'))$('asideSlot').appendChild(col);closeSheet()}
+}
+if(mq.addEventListener)mq.addEventListener('change',place);else if(mq.addListener)mq.addListener(place);
+
+/* ============================ СТАРТ ============================ */
+var restored=load();
+$('cityOther').value=S.cityOther;$('exactDate').value=S.exact;$('fName').value=S.name;
+$('fPhone').value=S.phone?fmtPhone(S.phone):'';$('fComment').value=S.comment;$('fConsent').checked=!!S.consent;
+renderDirs();renderAges();place();sync();
+if(restored){
+  var m=monthByKey(S.month);
+  $('resumeText').innerHTML='Нашли ваш черновик: <b>шаг '+savedStep+' из 8</b>'+
+    (S.dirs.length?' · '+esc(dirsLabel()):'')+' · '+S.nights+' '+nightsWord(S.nights)+(m?' · '+m.full:'');
+  $('resumeBar').hidden=false;
+}
+$('passBarcode').innerHTML=barcodeSVG(ticketId());
+window.addEventListener('beforeunload',save);
+})();
+</script>
+</body>
+</html>
